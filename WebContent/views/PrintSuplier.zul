@@ -1,0 +1,74 @@
+<window border="normal" width="300px" height="150px" position="center" closable="true" sizable="true" contentStyle="padding:0px;" use="com.controllers.PrintSuplierController">
+    <caption label="Laporan Suplier" image="resources/icons/printer.png"/>
+    <panel width="100%" height="100%">
+        <toolbar>
+            <toolbarbutton image="resources/icons/printer.png" tooltiptext="Generate" onClick="spaceOwner.print();"/>
+            <toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
+        </toolbar>
+        <panelchildren>
+            <borderlayout width="100%" height="100%">
+                <north style="border-left:0px; border-top:0px; border-right:0px;">
+                    <grid width="100%" height="100%">
+                        <columns visible="false">
+                            <column width="120px"/>
+                            <column/>
+                        </columns>
+                        <rows>
+                            <row>
+                                <label value="Filter" style="font-weight;"/>
+                                 <hlayout>
+                                <bandbox id="bbClient" hflex="true" readonly="true">
+                                    <bandpopup width="400px" height="350px">
+                                        <panel width="100%" height="100%">
+                                            <panelchildren>
+                                                <hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+                                                    <toolbar height="21px">
+                                                        <toolbarbutton image="resources/icons/accept.png" tooltiptext="OK" onClick="spaceOwner.clientSelected();"/>
+                                                    </toolbar>
+                                                    <toolbar align="end" height="21px">
+                                                        <image src="resources/icons/browse.png"/>
+                                                        <textbox id="tQuickSearchClients" onOK="spaceOwner.quickSearchClients();"/>
+                                                    </toolbar>
+                                                </hbox>
+                                                <listbox id="lbClients" width="100%" height="100%" vflex="true" style="white-space:nowrap;" onDoubleClick="spaceOwner.clientSelected();">
+                                                    <listhead sizable="true">
+                                                        <listheader label="Suplier ID" width="80px"/>
+                                                        <listheader label="Name"  width="150px"/>
+                                                        <listheader label="Perusahaan" width="150px"/>
+                                                    </listhead>
+                                                </listbox>
+                                                <paging id="pgClients" pageSize="20"/>
+                                            </panelchildren>
+                                        </panel>
+                                    </bandpopup>
+                                </bandbox>
+                                
+                                </hlayout>
+                                
+                            </row>
+                          <!--  <row>
+                                Sort By
+                                <combobox id="cbSort" readonly="true"></combobox>
+                            </row> -->
+                            <row>
+                                Type
+                                <combobox id="cbReportType" readonly="true" width="80px">
+                                    <attribute name="onCreate">
+                                        self.setSelectedIndex(0);
+                                    </attribute>
+                                    <comboitem label="Print"/>
+                                   <!-- <comboitem label="View"/> -->
+                                    <comboitem label="PDF"/>
+                                 <!--   <comboitem label="XLS"/> -->
+                                 <!--   <comboitem label="XML"/> -->
+                                </combobox>
+                            </row>
+                        </rows>
+                    </grid>
+               </north>
+                             
+            </borderlayout>
+        </panelchildren>
+    </panel>
+     
+</window>

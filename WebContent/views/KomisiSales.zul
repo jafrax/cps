@@ -1,0 +1,35 @@
+<window border="normal" width="800px" height="520px" position="center" closable="true" sizable="true" contentStyle="padding:0px;" use="com.controllers.KomisiSalesController">
+    <caption label="Komisi Sales" image="resources/icons/client.png"/>
+    <panel width="100%" height="100%">
+        <panelchildren>
+            <hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+                <toolbar height="21px">
+                	<toolbarbutton image="resources/icons/add.png" tooltiptext="Add" onClick="spaceOwner.Input();"/>
+                	<toolbarbutton id="tbnDelete" image="resources/icons/delete.png" disabled="true" tooltiptext="Delete" onClick="spaceOwner.delete();"/>
+                    <toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
+                </toolbar>
+                <toolbar align="end" height="21px">
+                    <image src="resources/icons/browse.png"/>
+                    <textbox id="tQuickSearch" onOK="spaceOwner.quickSearch();"/>
+                   </toolbar>
+            </hbox>
+            <listbox id="lb" width="100%" height="100%" vflex="true" style="white-space:nowrap;border:0px" onDoubleClick="spaceOwner.SalesSelected();">
+                <listhead sizable="true">
+                    <listheader label="Code Sales" width="80px"/>
+                    <listheader label="Nama Sales"  width="150px"/>
+                    <listheader label="Kategori" width="80px"/>
+                    <listheader label="Keterangan" width="150px"/>
+                    <listheader label="Komisi" width="80px"/>
+                    <listheader label="Harga A"  width="80px"/>
+                    <listheader label="Harga B" width="80px"/>
+                    <listheader label="Harga C" width="80px"/>
+                    <listheader label="Harga D" width="80px"/>
+                    <listheader label="Harga E" width="80px"/>
+                    <listheader label="Harga F" width="80px"/>
+                </listhead>
+                 <frozen columns="4"/>
+            </listbox>
+            <paging id="pg" pageSize="20"/>
+        </panelchildren>
+    </panel>
+</window>

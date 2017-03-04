@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ExcessStatementPrintout" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f51c664-7efb-4cba-955e-d40ba721303d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="343"/>
+	<parameter name="hid_number" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="aso_name" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="employee_name" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="member_name" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="policy_number" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="policy_index" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="receipt_date" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="notes" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="unit_head_claim" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="amount" class="java.lang.Double" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="802" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="73" y="65" width="100" height="20" uuid="7c10d615-60a8-417f-a654-94c1b59e8afc"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="33" y="65" width="40" height="20" uuid="d9c09c5c-e046-4394-959a-0ad51f223669"/>
+				<text><![CDATA[Jakarta,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="95" width="40" height="20" uuid="80a04c6a-e7c3-440f-a542-644d50af5c74"/>
+				<text><![CDATA[Nomor]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="84" y="95" width="100" height="20" uuid="5ae5315c-1794-4888-9794-bbf9f1e79a7d"/>
+				<textFieldExpression><![CDATA[$P{hid_number}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="95" width="11" height="20" uuid="a0b2cc72-3c40-4ea5-97db-05ca36cf058a"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="125" width="198" height="20" uuid="4697785b-2661-4cc2-8475-db1af31a6f35"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SURAT KETERANGAN EXCESS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="175" width="88" height="20" uuid="34f5e539-e2b1-4d6f-8935-d961b097bb69"/>
+				<text><![CDATA[Kepada Yth.,]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="33" y="195" width="479" height="20" uuid="a9be4359-0fd2-4bb7-a428-1473c893b866"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{aso_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="33" y="235" width="51" height="20" uuid="c93d272e-feff-4390-96ce-11534e7433d8"/>
+				<text><![CDATA[UP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="235" width="10" height="20" uuid="49104616-73f1-4968-9433-b401eefb41f5"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="94" y="235" width="244" height="20" uuid="be49249a-0b26-466f-b927-1b8d67129c05"/>
+				<textFieldExpression><![CDATA[$P{employee_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="84" y="255" width="10" height="20" uuid="68ea9903-94c3-4c70-b612-27d47fa8ca63"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="255" width="51" height="20" uuid="b5ee91cf-4007-4169-bb7f-cdd115f4db9b"/>
+				<text><![CDATA[Hal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="255" width="137" height="20" uuid="afc2100c-abc3-4e8d-8abc-b568587c903f"/>
+				<text><![CDATA[Klaim atas nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="255" width="10" height="20" uuid="a66d743f-d810-4cd9-aefd-2ed3361374b6"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="241" y="255" width="271" height="20" uuid="778328e2-4c64-4c1d-8d1b-d60b95d773f3"/>
+				<textFieldExpression><![CDATA[$P{member_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="94" y="275" width="137" height="20" uuid="9f7ddd2b-6d9e-42e8-91ac-a5f527478b4e"/>
+				<text><![CDATA[No. Polis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="275" width="10" height="20" uuid="e8ebb4aa-94fe-4cff-90b5-e5a6b73e8623"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="295" width="137" height="20" uuid="ca29190b-f655-43d4-87b1-d97f14ca5e43"/>
+				<text><![CDATA[No. Peserta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="295" width="10" height="20" uuid="2c4d0559-55e0-4303-8563-68511b25f6fb"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="315" width="137" height="20" uuid="a2431323-39cd-4aa0-8023-b951dc7b2a25"/>
+				<text><![CDATA[Tanggal Kuitansi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="315" width="10" height="20" uuid="667718ac-2d75-4035-9ccb-9ce0c89044b0"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="241" y="275" width="271" height="20" uuid="9a1565c5-649b-4d00-9578-3b318399f36d"/>
+				<textFieldExpression><![CDATA[$P{policy_number}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="241" y="295" width="271" height="20" uuid="1fc8d3e2-e765-4353-995a-cc36a483dde6"/>
+				<textFieldExpression><![CDATA[$P{policy_index}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement x="241" y="315" width="271" height="20" uuid="72b0166e-4fa5-43ae-99ee-bdf55acfe64c"/>
+				<textFieldExpression><![CDATA[$P{receipt_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="33" y="355" width="116" height="20" uuid="1cb9087d-c61c-4f1d-b7fe-a1feac6e4829"/>
+				<text><![CDATA[Dengan hormat,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="375" width="479" height="20" uuid="613f4310-1eee-4fdf-b883-db2846010244"/>
+				<text><![CDATA[Kami telah menerima dan menganalisa dokumen sehubungan dengan klaim tersebut di atas,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="415" width="310" height="20" uuid="e47e1afe-b878-42c4-befe-ffa08f38e94d"/>
+				<text><![CDATA[dikarenakan:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="73" y="445" width="439" height="50" uuid="9ccc1654-46c6-47a2-8b37-733643b5d492"/>
+				<textFieldExpression><![CDATA[$P{notes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="33" y="505" width="479" height="20" uuid="a04488fd-ac23-4cbb-9a7d-d101cf3a3aa4"/>
+				<text><![CDATA[Terlampir kami sertakan fotokopi kuitansi yang berhubungan dengan klaim tersebut.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="535" width="479" height="20" uuid="fa01b92e-2ef7-4929-bde3-1c944676fd24"/>
+				<text><![CDATA[Demikian informasi ini kami sampaikan, apabila terdapat pertanyaan lebih lanjut mohon dapat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="555" width="479" height="20" uuid="8c71b4da-24c9-49e1-b705-c2b0808073db"/>
+				<text><![CDATA[menghubungi Costumer Service kami pada jam kerja di nomor telepon 021-25568000.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="585" width="479" height="20" uuid="e17c7e38-06aa-426c-b881-c612feb9fc58"/>
+				<text><![CDATA[Atas perhatian dan kerjasama yang baik kami ucapkan terima kasih.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="625" width="116" height="20" uuid="429a4c93-9cb0-49fa-a427-278dfe6e5d63"/>
+				<text><![CDATA[Hormat kami,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="722" width="116" height="20" uuid="605039f0-84c0-4d89-8c80-13053de75337"/>
+				<text><![CDATA[Unit Head Claim]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="33" y="395" width="479" height="20" uuid="bd86b1a1-2042-48cf-9736-85c5d1221b7f"/>
+				<textFieldExpression><![CDATA["dan masih terdapat biaya yang harus dibayarkan sebesar Rp. " + new DecimalFormat("#,###.00").format($P{amount})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="33" y="702" width="151" height="20" uuid="7eba6883-faa1-48e2-9a84-4b244984c3cd"/>
+				<textFieldExpression><![CDATA[$P{unit_head_claim}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>

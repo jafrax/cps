@@ -1,0 +1,37 @@
+<window border="normal" width="800px" height="520px" position="center" closable="true" sizable="true" contentStyle="padding:0px;" use="com.controllers.SalesClientsController">
+    <caption label="Clients" image="resources/icons/client.png"/>
+    <panel width="100%" height="100%">
+        <panelchildren>
+            <hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+                <toolbar height="21px">
+                	<toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
+                </toolbar>
+                <toolbar align="end" height="21px" >
+                    <image src="resources/icons/browse.png"/>
+                    <textbox width="80px" id="tQuickSearch" onOK="spaceOwner.quickSearch();"/>
+                     <combobox width="100px" id="cbSales" onSelect="spaceOwner.SalesSelected();" readonly="true"/>
+                    <combobox width="70px" id="cbStatus" onSelect="spaceOwner.Selected();" readonly="true"/>
+                </toolbar>
+            </hbox>
+            <listbox id="lb" width="100%" height="100%" vflex="true" style="white-space:nowrap;border:0px" >
+                <listhead sizable="true">
+                    <listheader label="Client ID" width="80px"/>
+                    <listheader label="Name"  width="150px"/>
+                    <listheader label="Perusahaan" width="150px"/>
+                    <listheader label="Alamat1" width="150px"/>
+                    <listheader label="Alamat2" width="150px"/>
+                    <listheader label="Kota"  width="80px"/>
+                    <listheader label="Kode POS" width="100px"/>
+                    <listheader label="Telp" width="120px"/>
+                    <listheader label="HP" width="80px"/>
+                    <listheader label="Fax" width="100px"/>
+                    <listheader label="Kode SLS" width="100px"/>
+                    <listheader label="Keterangan"  width="80px"/>
+                    <listheader label="Plafon" width="120px"/>
+                </listhead>
+                 <frozen columns="4"/>
+            </listbox>
+            <paging id="pg" pageSize="20"/>
+        </panelchildren>
+    </panel>
+</window>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-07-30T15:13:08 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportSuplierById" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3a53faa2-13dd-4179-bcec-c075f7755e57">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SPC"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="idsuplier" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select  *  from spc.dbo.suplier where kode = $P{idsuplier}  order by kode asc]]>
+	</queryString>
+	<field name="kode" class="java.lang.String"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="perusahaan" class="java.lang.String"/>
+	<field name="alamat1" class="java.lang.String"/>
+	<field name="alamat2" class="java.lang.String"/>
+	<field name="kota" class="java.lang.String"/>
+	<field name="kodepos" class="java.lang.String"/>
+	<field name="telp" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="ledate" class="java.lang.String"/>
+	<field name="leuser" class="java.lang.String"/>
+	<field name="tdkpakai" class="java.math.BigDecimal"/>
+	<field name="data_ts" class="java.math.BigDecimal"/>
+	<field name="prnt_ts" class="java.math.BigDecimal"/>
+	<field name="tempobyr" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="210" height="20" uuid="e4ecbb70-2f42-4af8-b116-81cbb63ba18a"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN SUPLIER]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="57" height="18" uuid="ba952071-092f-4fb3-b376-d94ac67c8611"/>
+				<textFieldExpression><![CDATA[$F{kode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="2" width="63" height="18" uuid="70b4712b-b105-44d1-91ce-d8a175b7b20a"/>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="2" width="70" height="18" uuid="ce20ed40-a682-4291-baa9-eaf9e0600ba5"/>
+				<textFieldExpression><![CDATA[$F{perusahaan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="2" width="49" height="18" uuid="e03b6ccc-c579-4bcd-b1eb-75b410279cdf"/>
+				<textFieldExpression><![CDATA[$F{alamat1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="2" width="60" height="18" uuid="0d64faf7-d495-4f75-9e81-d5732e92c0fc"/>
+				<textFieldExpression><![CDATA[$F{alamat2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="2" width="37" height="18" uuid="e5815d71-c621-4584-b857-16d20964d60f"/>
+				<textFieldExpression><![CDATA[$F{kota}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="2" width="48" height="18" uuid="6b65f0f1-cfe8-4539-a1d3-e8d64682953b"/>
+				<textFieldExpression><![CDATA[$F{kodepos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="37" height="20" uuid="b2378449-c20a-4e8b-af81-05cf35abdaa7"/>
+				<textFieldExpression><![CDATA[$F{telp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="2" width="37" height="18" uuid="e24fe2fe-7f8f-4eb3-a66c-92a08ea07ea4"/>
+				<textFieldExpression><![CDATA[$F{fax}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="530" y="0" width="26" height="20" uuid="f35fff1c-060e-4463-b4e3-2230911b87be"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

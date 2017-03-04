@@ -1,0 +1,157 @@
+<window border="normal" width="900px" height="500px" position="center" closable="true" sizable="true" contentStyle="padding:0px;" use="com.controllers.master.EditTokoController">
+    <caption label="Edit Toko" image="resources/icons/tools.png"/>
+    <panel width="100%" height="100%">
+        <toolbar>
+            <toolbarbutton image="resources/icons/save.png" tooltiptext="Save" onClick="spaceOwner.save();"/>
+            <toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
+        </toolbar>
+        <panelchildren>
+        
+         <borderlayout width="100%" height="100%">
+          <north style="border-left:0px; border-top:0px; border-right:0px;">
+                    <grid width="100%" height="250px" style="border:0px;">
+                        <columns visible="false">
+                            <column align="right" width="100px"/>
+                            <column/>
+                            <column align="right" width="100px"/>
+                            <column/>
+                            
+                        </columns>
+                        <rows>
+                            <row>  <!-- baris 1 -->
+                             <label value="Kode Toko" style="font-weight:bold;"/>
+                                 <hlayout>
+                                 <textbox id="kode_toko" width="150px" readonly="true"/>
+                                  <textbox id="kota_region" width="150px" readonly="true"/>
+                                </hlayout>
+                                 <label value="Kel Harga" style="font-style:italic;"/>
+                                <hlayout>
+                                    <combobox id="kel_harga"  width="150px"  readonly="true" />
+                                 </hlayout>
+                            </row>
+ 
+                           
+                            <row>  <!-- baris 2 -->
+                            	<label value="Nama" style="font-weight:bold;"/>
+                            	<hlayout>
+                            	<textbox id="nama" width="300px" readonly="false"/>
+                            	</hlayout>
+                                <label value="" style="font-style:italic;"/>
+                                <hlayout>
+                            	
+                            	</hlayout>
+                            </row>
+                            
+  
+  
+                            <row> <!-- baris 3 -->
+                             <label value="Toko / PT "/>
+                             <hlayout>
+                             <textbox id="toko" width="300px" readonly="false"/>
+                             </hlayout> 
+							 <label value="Status" style="font-style:italic;"/>
+                             <hlayout>  
+                             <textbox id="status" width="300px" readonly="false"/>
+                             </hlayout>
+                            </row>
+  		
+  							<row> <!-- baris 4 -->
+                             <label value="Alamat1 "/>
+                             <hlayout>
+                             <textbox id="alamat1" width="300px" readonly="false"/>
+                             </hlayout> 
+							 <label value="Alamat2" style="font-style:italic;"/>
+                               <hlayout>
+                               <textbox id="alamat2" width="300px" readonly="false"/>
+                             </hlayout>
+                            </row>
+                            
+                            <row> <!-- baris 5 -->
+                             <label value="Kota "/>
+                             <hlayout>
+                             <textbox id="kota" width="150px" readonly="false"/>
+                             </hlayout> 
+							 <label value="Kode POS" style="font-style:italic;"/>
+                               <hlayout>
+                               <textbox id="pos" width="150px" readonly="false"/>
+                             </hlayout>
+                            </row>
+                            
+                            <row> <!-- baris 5 -->
+                             <label value="Telp 1"/>
+                             <hlayout>
+                             <textbox id="telp1" width="150px" readonly="false"/>
+                             </hlayout> 
+							 <label value="Telp 2" style="font-style:italic;"/>
+                               <hlayout>
+                               <textbox id="telp2" width="150px" readonly="false"/>
+                             </hlayout>
+                            </row>
+                            
+                            <row> <!-- baris 6 -->
+                             <label value="Hp 1"/>
+                             <hlayout>
+                             <textbox id="hp1" width="150px" readonly="false"/>
+                             </hlayout> 
+							 <label value="Hp 2" style="font-style:italic;"/>
+                               <hlayout>
+                               <textbox id="hp2" width="150px" readonly="false"/>
+                             </hlayout>
+                            </row>
+                            
+                        </rows>
+                    </grid>
+                </north>
+                
+                
+                <center style="border:0px;">
+                    <panel width="100%" height="100%">
+                        
+                        <toolbar>
+                            <toolbarbutton id="tbnAdd" image="resources/icons/add.png" tooltiptext="Add"  onClick="spaceOwner.add();"/>
+                            <toolbarbutton id="tbnDelete" image="resources/icons/delete.png" disabled="true" tooltiptext="Delete" onClick="spaceOwner.delete();"/>
+                        </toolbar>
+                        <panelchildren>
+                           <borderlayout width="100%" height="100%">
+					          <north style="border-left:0px; border-top:0px; border-right:0px;">
+					                    <grid width="100%" height="250px" style="border:0px;">
+					                        <columns visible="false">
+					                            <column align="right" width="100px"/>
+					                            <column/>
+					                            <column align="right" width="100px"/>
+					                            <column/>
+					                            
+					                        </columns>
+					                        <rows>
+					                        	<row>
+					                          		<label value="Kode Sales" style="font-weight:bold;"/>
+					                                 <hlayout>
+					                                	 <combobox id="kode_sales" width="150px" readonly="true"/>
+					                                </hlayout>
+					                                 <label value="Plafon" style="font-style:italic;"/>
+					                                <hlayout>
+					                                    <textbox id="plafon"  width="150px"  readonly="false" />
+					                                 </hlayout>
+				                                 </row>
+				                                 
+								        </rows>
+				                    </grid></north>
+                            </borderlayout>
+                        </panelchildren>
+                         <caption>
+                         	 <listbox id="lb" width="100%" height="100%" vflex="1" style="white-space:nowrap;border:0px;" onDoubleClick="spaceOwner.SalesSelected();">
+                                <listhead>
+                                    <listheader label="Kode Sales" width="80px"/>
+                                    <listheader label="Nama Sales"/>
+                                    <listheader label="Plafon"/>
+                                </listhead>
+                            </listbox>
+                         </caption>
+                    </panel>
+                </center>
+                
+        
+        </borderlayout>            
+        </panelchildren>
+    </panel>   
+</window>

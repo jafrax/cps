@@ -1,0 +1,50 @@
+<window border="normal" width="800px" height="520px" position="center" closable="true" sizable="true" contentStyle="padding:0px;" use="com.controllers.penjualan.DataMutasiController">
+    <caption label="Daftar Mutasi" image="resources/icons/client.png"/>
+    <panel width="100%" height="100%">
+        <panelchildren>
+            <hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+                <toolbar height="21px">
+                    <toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
+                </toolbar>
+                <toolbar align="end" height="21px">
+                    <!-- <image src="resources/icons/browse.png"/>
+                    <textbox id="tQuickSearch" onOK="spaceOwner.quickSearch();"/> -->
+                    		<label value="From : " />
+                             <datebox format="MM-dd-yyyy" id="startDate" width="90px"/>
+                             <label value="To : "/>
+                             <datebox format="MM-dd-yyyy" id="endDate" width="90px"/>
+                             <a label="GO" style="color:#00bbee;text-decoration :none" onClick="spaceOwner.viewMutasiHistory();"/>
+                </toolbar>
+            </hbox>
+            <listbox id="lb" width="100%" height="100%" vflex="true" style="white-space:nowrap;border:0px" onClick="spaceOwner.DetailSelected();">
+                <listhead sizable="true">
+                    <listheader label="Tgl Faktur"  width="150px"/>
+                    <listheader label="Nomor" width="150px"/>
+                    <listheader label="keterangan" width="200px"/>
+                    
+                </listhead>
+                 <frozen columns="4"/>
+            </listbox>
+            <paging id="pg" pageSize="10"/>
+            
+            
+ 
+              <listbox id="lbdt" width="100%" height="100%" vflex="true" style="white-space:nowrap;border:0px" >
+                <listhead sizable="true">
+                    <listheader label="Dari Lok" width="70px"/>
+                    <listheader label="Ke Lok" width="70px"/>
+                    <listheader label="Kode Barang"  width="150px"/>
+                    <listheader label="Nama Barang"  width="150px"/>
+                    <listheader label="Jumlah" width="150px"/>
+                    <listheader label="satuan"  width="80px"/>
+                    <listheader label="Merk" width="150px"/>
+                    <listheader label="Tipe" width="150px"/>
+                    
+                </listhead>
+                 <frozen columns="4"/>
+            </listbox>
+            
+            
+        </panelchildren>
+    </panel>
+</window>

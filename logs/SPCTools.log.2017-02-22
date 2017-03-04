@@ -1,0 +1,13 @@
+2017-02-22 10:26:22,798 [Thread-14] ERROR com.controllers.penjualan.MutasiController (MutasiController.java:107) - tgl
+java.lang.ClassCastException: java.lang.String cannot be cast to [Ljava.lang.Object;
+	at com.controllers.penjualan.MutasiController.populateEdit(MutasiController.java:99)
+	at com.controllers.penjualan.MutasiController.onCreate(MutasiController.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.zkoss.zk.ui.AbstractComponent.service(AbstractComponent.java:2724)
+	at org.zkoss.zk.ui.AbstractComponent.service(AbstractComponent.java:2654)
+	at org.zkoss.zk.ui.impl.EventProcessor.process(EventProcessor.java:136)
+	at org.zkoss.zk.ui.impl.EventProcessingThreadImpl.process0(EventProcessingThreadImpl.java:534)
+	at org.zkoss.zk.ui.impl.EventProcessingThreadImpl.run(EventProcessingThreadImpl.java:461)

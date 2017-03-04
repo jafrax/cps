@@ -1,0 +1,9 @@
+  <window border="normal" title="hello" apply="com.report.TestComposer">
+  	
+  	<div>Welcome to ZK Fiddle , run it right now!</div>
+  	
+	<button id="btn" label="Click Me To Evalute Event Binding With Composer" />
+    
+    <button id="btn2" label="New Window no menubar" />
+    
+  </window>
