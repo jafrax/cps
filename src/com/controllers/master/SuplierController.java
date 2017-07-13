@@ -181,4 +181,10 @@ public class SuplierController extends Window {
         }
     }
     
+    public void print() {
+    	Window w = (Window) Executions.createComponents("views/reporting/PrintSuplier.zul", this, null);
+        w.doModal();
+    }
+   
+    
 }

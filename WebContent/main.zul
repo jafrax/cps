@@ -62,33 +62,28 @@
             
             <menu label="Penjualan" image="resources/icons/icd.png">
                 <menupopup>
-                  <menu label="Transaksi" >
-                        <menupopup>
-                        	<menuitem label="Order Jual" image="resources/icons/icd.png" onClick='spaceOwner.open("OrderJual");'/>
+                        	<menuitem label="Order Jual"  onClick='spaceOwner.open("OrderJual");'/>
                             <menuitem label="Penjualan" image="resources/icons/icd.png" onClick='spaceOwner.open("jual");'/>
-                            <menuitem label="Retur Jual" image="resources/icons/icd.png" onClick='spaceOwner.open("returjual");'/>
-                        </menupopup>
-                    </menu>  
-                   <menu label="Data" >
-                        <menupopup>
-                            <menuitem label="Jual" image="resources/icons/icd.png" onClick='spaceOwner.open("datajual");'/>
-                            <menuitem label="Retur" image="resources/icons/icd.png" onClick='spaceOwner.open("datareturjual");'/>
-                        </menupopup>
-                  </menu>
+                            <menuitem label="Retur Jual" image="resources/icons/icd.png"/>  <!-- onClick='spaceOwner.open("returjual");' -->
+                  		<menuseparator/>
+                            <menuitem label="Data Jual" image="resources/icons/icd.png" /> <!-- onClick='spaceOwner.open("datajual");' -->
+                            <menuitem label="Data Retur" image="resources/icons/icd.png" /> <!-- onClick='spaceOwner.open("datareturjual");' -->
                   		<menuseparator/>
                     	<menuitem label="Mutasi" image="resources/icons/product.png" onClick='spaceOwner.openPenjualan("mutasi");'/>
+                    	<menuitem label="Data Mutasi"  onClick='spaceOwner.openPenjualan("datamutasi");'/>
                			<menuseparator/>
-               			<menuitem label="Persediaan" image="resources/icons/product.png" onClick='spaceOwner.open("persediaan");'/>    
+               			<menuitem label="Persediaan" image="resources/icons/product.png" /> <!-- onClick='spaceOwner.open("persediaan");' -->    
                 </menupopup>
             </menu>
             
             
             <menu label="Pembelian" image="resources/icons/icd.png">
                  <menupopup>
-                            <menuitem label="Pembelian" image="resources/icons/icd.png" onClick='spaceOwner.open("beli");'/>
-                            <menuitem label="Retur beli" image="resources/icons/icd.png" onClick='spaceOwner.open("returbeli");'/>
-                            <menuitem label="Beli" image="resources/icons/icd.png" onClick='spaceOwner.open("databeli");'/>
-                            <menuitem label="Retur" image="resources/icons/icd.png" onClick='spaceOwner.open("datareturbeli");'/>
+                            <menuitem label="Pembelian" image="resources/icons/icd.png" onClick='spaceOwner.openPembelian("beli");'/>
+                            <menuitem label="Retur beli" image="resources/icons/icd.png" onClick='spaceOwner.openPembelian("returbeli");'/>
+                  <menuseparator/>
+                            <menuitem label="Data Beli" image="resources/icons/icd.png" onClick='spaceOwner.openPembelian("databeli");'/>
+                            <menuitem label="Data Retur" image="resources/icons/icd.png" onClick='spaceOwner.openPembelian("datareturbeli");'/>
                  </menupopup>
             </menu>
             
@@ -96,58 +91,50 @@
             
             <menu label="General Ledger" image="resources/icons/finance.png">
                 <menupopup>
-                  <menuitem label="Perkiraan" image="resources/icons/tools.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Jurnal Kas  Bank" image="resources/icons/finance.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Kas  Bank" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Jurnal Umum" image="resources/icons/finance.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Jurnal Umum" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Biaya" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Jurnal Transaksi" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Buku Besar" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Laba-Rugi" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Neraca" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Neraca Saldo" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
+                  <menuitem label="Perkiraan" image="resources/icons/tools.png" onClick='spaceOwner.openAcc("perkiraan");'/> 
+                  <menuitem label="Jurnal Kas  Bank" image="resources/icons/finance.png" />
+                  <menuitem label="Laporan Kas  Bank" image="resources/icons/printer.png" />
+                  <menuitem label="Jurnal Umum" image="resources/icons/finance.png" />
+                  <menuitem label="Laporan Jurnal Umum" image="resources/icons/printer.png" />
+                  <menuitem label="Laporan Biaya" image="resources/icons/printer.png" />
+                  <menuitem label="Laporan Jurnal Transaksi" image="resources/icons/printer.png" />
+                  <menuitem label="Laporan Buku Besar" image="resources/icons/printer.png" />
+                  <menuitem label="Laporan Laba-Rugi" image="resources/icons/printer.png" />
+                  <menuitem label="Laporan Neraca" image="resources/icons/printer.png" />
+                  <menuitem label="Laporan Neraca Saldo" image="resources/icons/printer.png" />
                 </menupopup>
             </menu>
             
             
              <menu label="C/G" image="resources/icons/finance.png">
                 <menupopup>
-                  <menuitem label="Penerimaan C/G" image="resources/icons/icd.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan C/G" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
+                  <menuitem label="Penerimaan C/G" image="resources/icons/icd.png" />
+                  <menuitem label="Laporan C/G" image="resources/icons/printer.png" />
                 </menupopup>
             </menu>
             
             
             <menu label="Komisi" image="resources/icons/finance.png">
                 <menupopup>
-                  <menuitem label="Komisi Sales" image="resources/icons/tools.png" onClick='spaceOwner.open("KomisiSales");'/>
-                  <menuitem label="Pembayaran Komisi Sales" image="resources/icons/finance.png" onClick='spaceOwner.open("Payment");'/>
-                  <menuitem label="Laporan Komisi Sales" image="resources/icons/printer.png" onClick='spaceOwner.open("Payment");'/>
+                  <menuitem label="Komisi Sales" image="resources/icons/tools.png" onClick='spaceOwner.openKomisi("KomisiSales");'/>
+                  <menuitem label="Pembayaran Komisi Sales" image="resources/icons/finance.png" />
+                  <menuitem label="Laporan Komisi Sales" image="resources/icons/printer.png" />
                 </menupopup>
             </menu>
             
             
              <menu label="Posting" image="resources/icons/finance.png">
                 <menupopup>
-                  <menuitem label="Posting" image="resources/icons/analyst.png" onClick='spaceOwner.open("Payment");'/>
+                  <menuitem label="Posting" image="resources/icons/analyst.png" />
                 </menupopup>
             </menu>
             
             <menu label="Sales" image="resources/icons/it.png">
                 <menupopup>
-                  <menuitem label="Client" image="resources/icons/it.png" onClick='spaceOwner.open("SalesClients");'/>
-                  	<menu label="Sales Order">
-                        <menupopup>
-                            <menuitem label="Transaksi" image="resources/icons/icd.png" onClick='spaceOwner.open("SalesOrder");'/>
-                            <menuitem label="Data SO" image="resources/icons/icd.png" onClick='spaceOwner.open("DataSalesOrder");'/>
-                        </menupopup>
-               		</menu> 
-               		<menu label="Process Control">
-                        <menupopup>
-                            <menuitem label="Daftar SO" image="resources/icons/icd.png" onClick='spaceOwner.open("DaftarSalesOrder");'/>
-                        </menupopup>
-               		</menu> 
+                  			<menuitem label="Client" image="resources/icons/it.png" onClick='spaceOwner.openSales("SalesClients");'/>
+                  	        <menuitem label="Sales Order" image="resources/icons/icd.png" onClick='spaceOwner.openSales("SalesOrder");'/>
+                            <menuitem label="Data SO" image="resources/icons/icd.png" onClick='spaceOwner.openSales("DataSalesOrder");'/>
+                            <menuitem label="Daftar SO" image="resources/icons/icd.png" onClick='spaceOwner.openSales("DaftarSalesOrder");'/>
                 </menupopup>
             </menu>
             

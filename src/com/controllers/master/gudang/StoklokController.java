@@ -54,7 +54,7 @@ public class StoklokController extends Window {
             String q1 = "select "
                     + "a.kode,a.namabrg,b.jumlah,b.v_jumlah,a.merkbrg,a.tipebrg ";
             String q2 = "from "+Libs.getDbName()+".dbo.barang a inner join "+Libs.getDbName()+".dbo.stokperlok b ON a.kode=b.kd_barang "
-            		+ " where b.kd_lokasi = '"+cbLokasi.getText()+"'";
+            		+ " where b.kd_lokasi = '"+cbLokasi.getText()+"' and a.tdkpakai = 0 ";
             String q3 = "";
             String q4 = "order by a.kode asc ";
             

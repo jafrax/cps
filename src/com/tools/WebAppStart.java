@@ -49,7 +49,7 @@ public class WebAppStart implements WebAppInit {
     public void init(WebApp wa) throws Exception {
         loadConfig(wa);
         connectDatabaseDB();
-        connectMysqlDB();
+//        connectMysqlDB();
 //        connectPostresqlDB();
      }
 

@@ -1,0 +1,207 @@
+<window width="800px" height="620px" border="normal" sizable="true" closable="true" maximizable="true" position="center" contentStyle="padding:0px;" use="com.controllers.pembelian.BeliController">
+    <caption label="Pembelian" image="resources/icons/icd.png"/>
+   <hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+     <toolbar>
+            <toolbarbutton  id="tbsave" image="resources/icons/save.png" tooltiptext="Save" onClick="spaceOwner.save();"/>
+            <toolbarbutton id="tbinput" image="resources/icons/add.png" tooltiptext="Add" onClick="spaceOwner.input();"/>
+			<toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>        
+        </toolbar>
+        <toolbar align="end" height="21px" >
+            <toolbarbutton image="resources/icons/open.png" tooltiptext="Open"  onClick='spaceOwner.open("databeli");'/>
+        </toolbar>
+     </hbox>
+        <panel width="100%" height="100%">
+        <panelchildren>
+            <borderlayout width="100%" height="100%">
+                <north style="border-left:0px; border-top:0px; border-right:0px;">
+                <vlayout width="100%" height="100%" style="overflow:auto;">
+                   <groupbox  height="120px" title="Header Pembelian " closable="false">
+                    <grid width="100%" height="150px" style="border:0px;">
+                        <columns visible="false">
+                            <column align="right" width="100px"/>
+                            <column/>
+                            <column align="right" width="100px"/>
+                            <column/>
+                        </columns>
+                        <rows>
+                            <row>  <!-- baris 1 -->
+                            	<label value="No Faktur" style="font-weight:bold;"/>
+                            	<hlayout>
+                            	 <textbox id="nofaktur" width="100px" readonly="true"/> 
+                            	Gudang
+                            	<combobox id="gudang"  width="100px" readonly="true"/>
+                            	</hlayout>
+                            	<label value="Products" style="font-weight:bold;"/>
+                                <hlayout>
+                                <bandbox id="bbProduct" hflex="true" readonly="true">
+                                    <bandpopup width="400px" height="350px">
+                                        <panel width="100%" height="100%">
+                                            <panelchildren>
+                                                <hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+                                                    <toolbar height="21px">
+                                                        <toolbarbutton image="resources/icons/accept.png" tooltiptext="OK" onClick="spaceOwner.productSelected();"/>
+                                                    </toolbar>
+                                                    <toolbar align="end" height="21px">
+                                                        <image src="resources/icons/browse.png"/>
+                                                        <textbox id="tQuickSearchProducts" onOK="spaceOwner.quickSearchProducts();"/>
+                                                    </toolbar>
+                                                </hbox>
+                                                <listbox id="lbProducts" width="100%" height="100%" vflex="true" style="white-space:nowrap; border-top:0px;" onDoubleClick="spaceOwner.productSelected();">
+                                                    <listhead sizable="true">
+                                                        <listheader label="Kode" width="70px"/>
+                                                        <listheader label="Nama" width="110px"/>
+                                                        <listheader label="Merk" width="100px"/>
+                                                        <listheader label="Stok" width="110px"/>
+                                                        <listheader label="Tipe" width="100px"/>
+                                                        <listheader label="ukuran" width="100px"/>
+                                                        <listheader label="warna" width="100px"/>
+                                                    </listhead>
+                                                    <frozen columns="2"/>
+                                                </listbox>
+                                                 <paging id="pgProducts" pageSize="20"/>
+                                            </panelchildren>
+                                        </panel>
+                                    </bandpopup>
+                                </bandbox>
+                                 <textbox id="namabarang" width="100px" readonly="true"/>
+                                </hlayout>           
+                            </row>
+                            <row>  <!-- baris 2 -->
+                             <label value="Suplier" style="font-weight:bold;"/>
+                                 <hlayout>
+                                <bandbox id="bbClient" hflex="true" readonly="true">
+                                    <bandpopup width="400px" height="350px">
+                                        <panel width="100%" height="100%">
+                                            <panelchildren>
+                                                <hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+                                                    <toolbar height="21px">
+                                                        <toolbarbutton image="resources/icons/accept.png" tooltiptext="OK" onClick="spaceOwner.clientSelected();"/>
+                                                    </toolbar>
+                                                    <toolbar align="end" height="21px">
+                                                        <image src="resources/icons/browse.png"/>
+                                                        <textbox id="tQuickSearchClients" onOK="spaceOwner.quickSearchClients();"/>
+                                                    </toolbar>
+                                                </hbox>
+                                                <listbox id="lbClients" width="100%" height="100%" vflex="true" style="white-space:nowrap;" onDoubleClick="spaceOwner.clientSelected();">
+                                                    <listhead sizable="true">
+                                                        <listheader label="Suplier ID" width="80px"/>
+                                                        <listheader label="Name"  width="150px"/>
+                                                        <listheader label="Perusahaan" width="150px"/>
+                                                        <listheader label="tempo" width="50px"/>
+                                                    </listhead>
+                                                     <frozen columns="2"/>
+                                                </listbox>
+                                                <paging id="pgClients" pageSize="20"/>
+                                            </panelchildren>
+                                        </panel>
+                                    </bandpopup>
+                                </bandbox>
+                                  <textbox id="perusahaan" width="80px" readonly="true"/>
+                                </hlayout>
+                                 <label value="Jumlah" style="font-style:italic;"/>
+                                <hlayout>
+                            	<textbox id="jumlah"  width="100px"  />
+                            	Harga
+                            	<textbox id="harga"  width="100px" />
+                            	</hlayout>
+                            </row>
+                            <row>  <!-- baris 3 -->
+                            	 <label value="Tgl Faktur: "/>
+	                             <hlayout>
+	                             <datebox format="yyyy-MM-dd"  id="tglfaktur" width="90px" placeholder="Faktur"/>
+	                             Tempo
+	                             <datebox format="yyyy-MM-dd"  id="tempo" width="90px" placeholder="Tempo"/>
+	                             <combobox  width="50px" readonly="true"/>
+								 </hlayout> 
+                               <label value="Disc 1" style="font-style:italic;"/>
+                                <hlayout>
+                            	<textbox id="disc1"  width="100px"  readonly="false"/>
+                            	Disc 2
+                            	<textbox id="disc2"  width="100px" readonly="false"/>
+                             </hlayout>
+                            </row>
+                        </rows>
+                    </grid>
+                   </groupbox>
+                   
+                   <groupbox height="300px" title="Detail Pembelian" closable="false">
+                   <tabbox width="100%" height="100%">
+					    <tabs>
+					        <tab label="Transaksi" closable="false" />
+					        <tab label="Jurnal" closable="false" />
+					    </tabs>
+					    <toolbar>
+         					<toolbarbutton id="tbnAdd" image="resources/icons/add.png" tooltiptext="Add" disabled="true" onClick="spaceOwner.addItem();"/>
+		                    <toolbarbutton id="tbnDelete" image="resources/icons/delete.png" disabled="true" tooltiptext="Delete" onClick="spaceOwner.delete();"/>
+					    </toolbar>
+					    <tabpanels>
+					        <tabpanel>
+					         <panel width="100%" height="100%">
+		                        <panelchildren>
+		                            <listbox id="lb" width="100%" height="100%" vflex="1" style="white-space:nowrap;border:0px;" onSelect="spaceOwner.ItemSelected();">
+		                                <listhead>
+		                                    <listheader label="Kode" width="80px"/>
+		                                    <listheader label="Nama Barang"/>
+		                                    <listheader label="Jumlah Barang"/>
+		                                    <listheader label="Harga Barang"/>
+		                                    <listheader label="Disc 1"/>
+		                                    <listheader label="Disc 2"/>
+		                                    <listheader label="Gudang"/>
+		                                </listhead>
+		                            </listbox>
+		                            <paging id="pg" pageSize="6"/>
+		                        </panelchildren>
+		                    </panel>
+					        </tabpanel>
+					        <tabpanel>This is panel 2 The second panel</tabpanel>
+					    </tabpanels>
+					</tabbox>
+                   </groupbox>
+                   
+                   <groupbox height="230px" title="Total Pembelian " closable="false">
+                   <grid width="100%" height="150px" style="border:0px;">
+                        <columns visible="false">
+                            <column align="right" width="100px"/>
+                            <column/>
+                            <column align="right" width="100px"/>
+                            <column/>
+                        </columns>
+                        <rows>
+                            <row> <!-- baris 1 -->
+                             <label value="Disc %:" style="font-style:italic;"/>
+	                             <hlayout>
+	                             <textbox   width="100px" readonly="false"/>
+                             </hlayout> 
+							 <label value="Total :" style="font-style:italic;"/>
+                                <hlayout>
+                            	<textbox   width="100px"  readonly="false"/>
+                             </hlayout>
+                            </row>
+                            <row> <!-- baris 2 -->
+                             <label value="Disc Rp:" style="font-style:italic;"/>
+	                             <hlayout>
+	                             <textbox   width="100px" readonly="false"/>
+                             </hlayout> 
+							 <label value="Total Disc :" style="font-style:italic;"/>
+                                <hlayout>
+                            	<textbox   width="100px"  readonly="false"/>
+                             </hlayout>
+                            </row>
+                             <row> <!-- baris 3 -->
+                             <label  style="font-style:italic;"/>
+	                             <hlayout>
+                             	</hlayout> 
+							 <label value="Netto :" style="font-style:italic;"/>
+                                <hlayout>
+                            	<textbox   width="100px"  readonly="false"/>
+                             </hlayout>
+                            </row>
+                        </rows>
+                    </grid>
+                   </groupbox>
+                  </vlayout>
+                </north>
+            </borderlayout>
+        </panelchildren>
+    </panel>
+</window>

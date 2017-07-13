@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-07-30T15:12:24 -->
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-03-27T08:58:47 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportSuplierAll" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3a53faa2-13dd-4179-bcec-c075f7755e57">
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SPC"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
 	<queryString>
-		<![CDATA[select  *  from  SPC.dbo.suplier Order by kode asc]]>
+		<![CDATA[select  *  from  cps.dbo.suplier Order by kode asc]]>
 	</queryString>
 	<field name="kode" class="java.lang.String"/>
 	<field name="nama" class="java.lang.String"/>
@@ -16,17 +16,13 @@
 	<field name="kodepos" class="java.lang.String"/>
 	<field name="telp" class="java.lang.String"/>
 	<field name="fax" class="java.lang.String"/>
-	<field name="ledate" class="java.lang.String"/>
-	<field name="leuser" class="java.lang.String"/>
 	<field name="tdkpakai" class="java.math.BigDecimal"/>
-	<field name="data_ts" class="java.math.BigDecimal"/>
-	<field name="prnt_ts" class="java.math.BigDecimal"/>
 	<field name="tempobyr" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="22" splitType="Stretch">
+		<band height="70" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="210" height="20" uuid="e4ecbb70-2f42-4af8-b116-81cbb63ba18a"/>
 				<textElement>
@@ -34,10 +30,40 @@
 				</textElement>
 				<text><![CDATA[LAPORAN SUPLIER]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="0" y="44" width="57" height="17" uuid="824e585b-ad3a-47fb-814e-bf4f0f84f0ac"/>
+				<text><![CDATA[KODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="44" width="57" height="17" uuid="be3e33ad-12da-4f6a-beb9-91438f8edecf"/>
+				<text><![CDATA[NAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="44" width="57" height="17" uuid="c62d7b7a-eb3e-4520-9531-874ce1252e8c"/>
+				<text><![CDATA[PERUSAHAAM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="44" width="111" height="17" uuid="bbe9b3e1-2d93-4883-9480-8d5014829212"/>
+				<text><![CDATA[ALAMAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="46" width="57" height="17" uuid="766f1475-ad2a-46d4-8d0a-ecf2b86216c4"/>
+				<text><![CDATA[KOTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="46" width="51" height="19" uuid="a1a0dc95-41a7-49d5-b464-1feaebae166a"/>
+				<text><![CDATA[TELP]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="60" width="556" height="5" uuid="188e1ace-8988-429f-83bb-af681d2e253d"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="41" width="556" height="5" uuid="c5456422-ffd5-49ea-8606-8edab85a6bb9"/>
+			</line>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="24" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="23" splitType="Stretch">
@@ -54,28 +80,16 @@
 				<textFieldExpression><![CDATA[$F{perusahaan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="221" y="2" width="49" height="18" uuid="e03b6ccc-c579-4bcd-b1eb-75b410279cdf"/>
+				<reportElement x="221" y="2" width="109" height="18" uuid="e03b6ccc-c579-4bcd-b1eb-75b410279cdf"/>
 				<textFieldExpression><![CDATA[$F{alamat1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="2" width="60" height="18" uuid="0d64faf7-d495-4f75-9e81-d5732e92c0fc"/>
-				<textFieldExpression><![CDATA[$F{alamat2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="350" y="2" width="37" height="18" uuid="e5815d71-c621-4584-b857-16d20964d60f"/>
+				<reportElement x="340" y="2" width="58" height="18" uuid="e5815d71-c621-4584-b857-16d20964d60f"/>
 				<textFieldExpression><![CDATA[$F{kota}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="392" y="2" width="48" height="18" uuid="6b65f0f1-cfe8-4539-a1d3-e8d64682953b"/>
-				<textFieldExpression><![CDATA[$F{kodepos}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="450" y="0" width="37" height="20" uuid="b2378449-c20a-4e8b-af81-05cf35abdaa7"/>
+				<reportElement x="430" y="0" width="56" height="20" uuid="b2378449-c20a-4e8b-af81-05cf35abdaa7"/>
 				<textFieldExpression><![CDATA[$F{telp}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="500" y="2" width="37" height="18" uuid="e24fe2fe-7f8f-4eb3-a66c-92a08ea07ea4"/>
-				<textFieldExpression><![CDATA[$F{fax}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -41,13 +41,15 @@ public class MutasiController extends Window {
     private Combobox dari ;
     private Combobox ke ;
     private String mutasiId ;
+    private int stok;
+
  
     public void onCreate() {
         initComponents();
         mutasiId = (String) getAttribute("no");
-        System.out.println(mutasiId);
+//        System.out.println(mutasiId);
         if (mutasiId != null && !mutasiId.isEmpty()){
-        	System.out.println("edit ya");
+//        	System.out.println("edit ya");
         	populateEdit(mutasiId);
         }
 
@@ -109,7 +111,7 @@ public class MutasiController extends Window {
           s.close();
       }
  	 	
- 	   ((Toolbarbutton) getFellow("clear")).setDisabled(false);
+ 	   ((Toolbarbutton) getFellow("clear")).setDisabled(true);
  	   populateProducts(0, pgProducts.getPageSize());
  	  populate(0, pg.getPageSize());
     	
@@ -127,7 +129,7 @@ public class MutasiController extends Window {
 	 	try{
 	 		
 	 		String query = "select isnull(max(right(no_mutasi,5)),0) as nomor , 0 from  " +Libs.getDbName()+".dbo.mutasi  ";
-	 		System.out.println(query);
+//	 		System.out.println(query);
 	 		List<Object[]> l = s.createSQLQuery(query).list();
   	    	for(Object[] o : l){
   	    		String rs = Libs.nn(o[0]).trim();
@@ -168,7 +170,7 @@ public class MutasiController extends Window {
        String qry = "insert into  " +Libs.getDbName()+".dbo.mutasi "
        		+ "(no_mutasi,tgl_mutasi,keterangan) values  "
             + "( '"+ nomor.getText() + "' , '"+tgl.getText()+"' , '"+keterangan.getText()+"') ";
-       System.out.println(qry);
+//       System.out.println(qry);
        s.createSQLQuery(qry).executeUpdate();
        s.flush();
        s.clear();
@@ -242,7 +244,7 @@ public class MutasiController extends Window {
             Integer rc = (Integer) s.createSQLQuery(q0 + q2 + q3).uniqueResult();
             pgProducts.setTotalSize(rc);
             
-            System.out.println(q1 + q2 + q3 + q4);
+//            System.out.println(q1 + q2 + q3 + q4);
             List<Object[]> l = s.createSQLQuery(q1 + q2 + q3 + q4).setFirstResult(offset).setMaxResults(limit).list();
             for (Object[] o : l) {
 
@@ -275,7 +277,7 @@ public class MutasiController extends Window {
             ((Combobox) getFellow("ke")).setDisabled(false);
             Libs.getGudang(dari);
             Libs.getGudang(ke);
-            
+           
             ((Toolbarbutton) getFellow("btnadd")).setDisabled(false);
             populate (0, pg.getPageSize());
         }
@@ -301,6 +303,13 @@ public class MutasiController extends Window {
 
     
     public void  add(){
+    	
+    	stok = Libs.cekstoklok(bbProduct.getText(),dari.getText());
+    	int jml = Integer.parseInt(jumlah.getText());
+    	if (stok < jml){
+    		Messagebox.show("stok = "+stok);
+    	}else{
+    		
    	 Session s = Libs.sfDB.openSession();
      try {
          s.beginTransaction();
@@ -308,8 +317,12 @@ public class MutasiController extends Window {
          String qry = "insert into  " +Libs.getDbName()+".dbo.mutasi_rin "
          		+ "(no_mutasi,kode_brg,jumlah, lok_dr,lok_ke) values  "
               + "( '"+ nomor.getText() + "' , '"+bbProduct.getText()+"', '"+jumlah.getText()+"' , '"+dari.getText()+"', '"+ke.getText()+"') ";
-         System.out.println(qry);
-         s.createSQLQuery(qry).executeUpdate();
+         String updateA = "update " +Libs.getDbName()+".dbo.stokperlok set jumlah = (jumlah - '"+jumlah.getText()+"' ) "
+         		+ " where kd_barang = '"+bbProduct.getText()+"' and kd_lokasi = '"+dari.getText()+"' ";
+         String updateB = "update " +Libs.getDbName()+".dbo.stokperlok set jumlah = (jumlah + '"+jumlah.getText()+"' ) "
+          		+ " where kd_barang = '"+bbProduct.getText()+"' and kd_lokasi = '"+ke.getText()+"' ";
+          
+         s.createSQLQuery(qry+ updateA + updateB).executeUpdate();
          s.flush();
          s.clear();
          s.getTransaction().commit();
@@ -324,6 +337,8 @@ public class MutasiController extends Window {
      } finally {
          if (s!=null && s.isOpen()) s.close();
      }
+     
+    }
     }
 
 
@@ -338,7 +353,7 @@ public class MutasiController extends Window {
             String q3 = " where b.no_mutasi = '"+nomor.getText()+"'";
             String q4 = "order by kode  asc ";
 
-            System.out.println(q1 + q2 + q3 + q4);
+//            System.out.println(q1 + q2 + q3 + q4);
             Integer rc = (Integer) s.createSQLQuery(q0 + q2 + q3).uniqueResult();
             pg.setTotalSize(rc);
             
@@ -373,6 +388,55 @@ public class MutasiController extends Window {
         w.doOverlapped();
     }
     
+    
+public void  delete(){
+    	
+	 if (Messagebox.show("Do you want to remove this Client ?", "Confirmation", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, Messagebox.CANCEL)==Messagebox.OK) {
+	       	obj = (lb.getSelectedItem().getValue());
+//	       	b.lok_dr,b.kode_brg,namabrg,b.jumlah,a.satuan,b.lok_ke 
+	       	String kodebarang = Libs.nn(obj[1]);
+	       	String dari = Libs.nn(obj[0]);
+	       	String ke = Libs.nn(obj[5]);
+	       	String jumlah = Libs.nn(obj[3]);
+	       	String nomutasi = mutasiId;
+	       	
+
+	    	stok = Libs.cekstoklok(kodebarang,ke);
+	    	int jml = Integer.parseInt( Libs.nn(obj[3]));
+	    	if (stok < jml){
+	    		Messagebox.show("stok kurang !!!");
+	    	}else{
+	       	
+		   	 Session s = Libs.sfDB.openSession();
+		     try {
+		         s.beginTransaction();
+		
+		         String qry = "delete  " +Libs.getDbName()+".dbo.mutasi_rin  "
+		         		+ "where no_mutasi= '"+ nomutasi +"' and kode_brg = '"+ kodebarang +"' "
+		         		+ "and lok_dr = '"+dari+"'  and lok_ke = '"+ke+"' ";
+		         
+		         String updateA = "update " +Libs.getDbName()+".dbo.stokperlok set jumlah = (jumlah + '"+jumlah+"' ) "
+		         		+ " where kd_barang = '"+kodebarang+"' and kd_lokasi = '"+dari+"' ";
+		         String updateB = "update " +Libs.getDbName()+".dbo.stokperlok set jumlah = (jumlah - '"+jumlah+"' ) "
+		          		+ " where kd_barang = '"+kodebarang+"' and kd_lokasi = '"+ke+"' ";
+		          
+//		         System.out.println(qry+ updateA + updateB);
+		         s.createSQLQuery(qry+ updateA + updateB).executeUpdate();
+		         s.flush();
+		         s.clear();
+		         s.getTransaction().commit();
+		        
+		         populate (0, pg.getPageSize());
+         
+		     } catch (Exception ex) {
+		         log.error("delete", ex);
+		     } finally {
+		         if (s!=null && s.isOpen()) s.close();
+		     }
+     
+	    	}
+	 }
+    }
     
     
 }

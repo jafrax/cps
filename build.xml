@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="cps">
 
-	<property name="external.lib.path" value="/home/saifudin//workspace/libraries/java" />
-	<property name="webapps.dir" value="D:/apache-tomcat-7.0.54/webapps" />
-	<property name="temp.dir" value="D:/data/temp" />
+	<property name="external.lib.path" value="/home/saifudin/workspace/libraries/java" />
+	<property name="webapps.dir" value="/home/saifudin/apache-tomcat-7.0.54/webapps" />
+	<property name="temp.dir" value="/home/saifudin/data/temp" />
 	<property name="war.name" value="cps" />
 
 	<path id="compile.classpath">
@@ -58,9 +58,6 @@
 		</javac>
 	</target>
 
-	<!--<target name="compile" depends="modules, main, jar" description="compile 
-		all" /> -->
-
 	<target name="clean">
 		<delete dir="build" />
 	</target>
@@ -92,7 +89,4 @@
 		<copy file="${temp.dir}/${war.name}.war" tofile="${webapps.dir}/${war.name}.war"
 			overwrite="true" />
 	</target>
-	
-
-	
 </project>

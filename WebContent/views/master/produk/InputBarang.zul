@@ -22,9 +22,13 @@
 	                       </hlayout> </row>
 	                    <row>Merk barang <hlayout>
 		                    <textbox id="merkbrg" width="150px" />
+		                    Ukuran
+		                    <textbox id="ukuran" width="150px" readonly="false" />
 		                    </hlayout> </row>
 		               <row>Tipe barang <hlayout>
 		                   <textbox id="tipebrg" width="150px" />
+		                   Warna
+		                    <textbox id="warna" width="150px" readonly="false" />
 		                   </hlayout> </row>  
 	                    <row>Merk motor<hlayout>
 		                    <combobox id="merk" width="100px"  readonly="true" />
@@ -40,24 +44,16 @@
 	                       <combobox id="satuan" width="100px" />
 	                       </hlayout> </row>
 	                    <row>Harga A <hlayout>
-		                    <textbox id="harga1" width="80px" />
+		                    <textbox id="hargaA" width="80px" />
+		                    Harga B
+		                    <textbox id="hargaB" width="80px" />
 		                    </hlayout> </row>
-		               <row>Harga B <hlayout>
-		                   <textbox id="harga2" width="80px" />
-		                   </hlayout> </row>
-	                   <row> Harga C <hlayout>
-	                       <textbox id="harga3" width="80px" />
+		               <row> Harga E <hlayout>
+	                       <textbox id="hargaE" width="80px" />
+	                       HPP
+	                       <textbox id="hpp" width="80px" />
 	                       </hlayout> </row>
-	                    <row> Harga D <hlayout>
-		                    <textbox id="harga4" width="80px" />
-		                    </hlayout> </row>
-		               <row>Harga E  <hlayout>
-		                   <textbox id="harga5" width="80px" />
-		                   </hlayout> </row>
-	                   <row>Harga F <hlayout>
-	                       <textbox id="harga6" width="80px" />
-	                       </hlayout> </row>
-	                    <row>keterangan 2 <hlayout>
+	                    <row>keterangan 1 <hlayout>
 		                    <textbox id="ket1" width="300px" />
 		                    </hlayout> </row>
 		               <row>keterangan 2<hlayout>

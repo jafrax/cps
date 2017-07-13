@@ -82,7 +82,7 @@ public class Libs {
     	  try{
     	    	String sql = "Select * from " +Libs.getDbName()+".dbo.sales where tdkpakai=0  and kode = '"+code+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
-    	    	System.out.println("sales "+ sql);	
+//    	    	System.out.println("sales "+ sql);	
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = ((String)o[1]).trim() + "("+ ((String) o[0]).trim() + ")";
@@ -113,7 +113,7 @@ public class Libs {
     	  try{
     	    	String sql = "Select kode,perusahaan from " +Libs.getDbName()+".dbo.customer where  kode = '"+code+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
-    	    	System.out.println("toko "+ sql);	
+//    	    	System.out.println("toko "+ sql);	
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = Libs.nn(o[1]).trim();
@@ -135,7 +135,7 @@ public class Libs {
     	  try{
     	    	String sql = "Select jumlah,v_jumlah, (jumlah - v_jumlah) as stok  from " +Libs.getDbName()+".dbo.stokperlok where  kd_barang = '"+code+"' and kd_lokasi = '"+Lok+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
-    	    	System.out.println("sisa stok "+ sql);	
+//    	    	System.out.println("sisa stok "+ sql);	
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = Integer.parseInt(Libs.nn(o[2]));
@@ -156,7 +156,7 @@ public class Libs {
     	  try{
     	    	String sql = "Select kode,hpp from " +Libs.getDbName()+".dbo.barang where  kode = '"+code+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
-    	    	System.out.println("hpp "+ sql);	
+//    	    	System.out.println("hpp "+ sql);	
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = Integer.parseInt(Libs.nn(o[1]));
@@ -178,7 +178,7 @@ public class Libs {
     	  try{
     	    	String sql = "Select no_order,total from " +Libs.getDbName()+".dbo.salesorder  where  no_order = '"+order+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
-    	    	System.out.println("total "+ sql);	
+//    	    	System.out.println("total "+ sql);	
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = Libs.nn(o[1]).trim();
@@ -201,7 +201,6 @@ public class Libs {
     	  try{
     	    	String sql = "Select * from " +Libs.getDbName()+".dbo.sales where tdkpakai=0  order by kode asc";
     	    	SQLQuery query = s.createSQLQuery(sql);
-    	    	System.out.println("sales "+ sql);	
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		cb.appendItem(((String)o[1]).trim() + "("+ ((String) o[0]).trim() + ")");
@@ -350,12 +349,50 @@ public class Libs {
     }
     
     
+    public static int cekstoklok(String kode, String lokasi){
+    	Session s = Libs.sfDB.openSession();
+    	int result =0 ;
+    	  try{
+	  	    	String sql = "Select jumlah,0  from " +Libs.getDbName()+".dbo.stokperlok where kd_barang = '"+kode+"' and kd_lokasi = '"+lokasi+"' ";
+//	  	    	System.out.println(sql);
+	  	    	List<Object[]> l = s.createSQLQuery(sql).list();
+	  	    	for(Object[] o : l){
+	  	    		result = Integer.parseInt(Libs.nn(o[0]));
+//	  	    		System.out.println("stok lokasi ya = "+ result);
+	  	    	}
+	  	  }catch(Exception e){
+	  	    		log.error("propinsi", e);
+	  	  }finally{
+	  	  	if(s != null && s.isOpen()) s.close();
+	  	  }
+    	  return result ;
+    }
+    
     public static String propinsi(String kode){
     	Session s = Libs.sfDB.openSession();
     	String result ="";
     	  try{
 	  	    	String sql = "Select kode_prop,nama_prop  from " +Libs.getDbName()+".dbo.propinsi where kode_prop=left('"+kode+"',2)  ";
-	  	    	System.out.println(sql);
+//	  	    	System.out.println(sql);
+	  	    	List<Object[]> l = s.createSQLQuery(sql).list();
+	  	    	for(Object[] o : l){
+	  	    		  result = Libs.nn(o[1]).trim();
+	  	    	}
+	  	  }catch(Exception e){
+	  	    		log.error("propinsi", e);
+	  	  }finally{
+	  	  	if(s != null && s.isOpen()) s.close();
+	  	  }
+    	  return result ;
+    }
+
+    
+    public static String kota(String kode){
+    	Session s = Libs.sfDB.openSession();
+    	String result ="";
+    	  try{
+	  	    	String sql = "Select kode_prop,nama_prop  from " +Libs.getDbName()+".dbo.propinsi where kode_prop=left('"+kode+"',2)  ";
+//	  	    	System.out.println(sql);
 	  	    	List<Object[]> l = s.createSQLQuery(sql).list();
 	  	    	for(Object[] o : l){
 	  	    		  result = Libs.nn(o[1]).trim();
@@ -374,19 +411,40 @@ public class Libs {
     	String result ="0";
     	  try{
 	  	    	String sql = "select sum(plafon) as total,0 from " +Libs.getDbName()+".dbo.plafontoko  where kode_kota = '"+kode_kota+"' and kode_toko = '"+kode_toko+"'  ";
-	  	    	System.out.println(sql);
+//	  	    	System.out.println(sql);
 	  	    	List<Object[]> l = s.createSQLQuery(sql).list();
 	  	    	for(Object[] o : l){
-	  	    		  result = Libs.nn(o[0]).trim();
+	  	    		
+	  	    		result = Libs.nn(o[0]);
+	  	    		
 	  	    	}
 	  	  }catch(Exception e){
-	  		log.error("propinsi", e);
+	  		log.error("total plafon", e);
 	  	  }finally{
 	  	  	if(s != null && s.isOpen()) s.close();
 	  	  }
     	  return result ;
-}
+} 
 
+    public static String setperkiraan(String kode){
+		Session s = Libs.sfDB.openSession();
+    	String result ="0";
+    	  try{
+	  	    	String sql = "select kode,ket from " +Libs.getDbName()+".dbo.setprk  where kode = '"+kode+"' ";
+//	  	    	System.out.println(sql);
+	  	    	List<Object[]> l = s.createSQLQuery(sql).list();
+	  	    	for(Object[] o : l){
+	  	    		  result = Libs.nn(o[1]).trim();
+	  	    	}
+	  	  }catch(Exception e){
+	  		log.error("set perkiraan", e);
+	  	  }finally{
+	  	  	if(s != null && s.isOpen()) s.close();
+	  	  }
+    	  return result ;
+} 
+
+    
     
     public static String nextnumber(String kota){
     	Session s = Libs.sfDB.openSession();
@@ -423,11 +481,13 @@ public class Libs {
     public static String hargajual(String code,int n){
     	Session s = Libs.sfDB.openSession();
     	String result ="0";
+    	String a ="";
     	if (n > 0){
-    		String harga = "harga"+n;
+    		if (n == 1 ){a = "A";} else if(n == 2){a = "B";} else if (n == 3) {a = "E";} ;
+    		String harga = "harga"+a;
 	  	  try{
 	  	    	String sql = "Select kode,"+harga+" from " +Libs.getDbName()+".dbo.barang where kode='"+code+"'  ";
-	  	    	System.out.println("hj "+n+sql);
+//	  	    	System.out.println("hj "+n+sql);
 	  	    	List<Object[]> l = s.createSQLQuery(sql).list();
 	  	    	for(Object[] o : l){
 	  	    		result = Libs.nn(o[1]).trim();
@@ -451,7 +511,7 @@ public class Libs {
   	    			+ "from " +Libs.getDbName()+".dbo.salesorder_rin a  "
   	    			+ "inner join " +Libs.getDbName()+".dbo.salesorder b ON a.no_order=b.no_order  "
   	    			+ "where a.kd_barang='"+code+"' and  b.kd_cust = '"+cust+"' order by a.ledate desc";
-  	    	System.out.println("haj :"+sql);
+//  	    	System.out.println("haj :"+sql);
   	    	List<Object[]> l = s.createSQLQuery(sql).list();
   	    	for(Object[] o : l){
   	    		result = Libs.nn(o[1]).trim();
@@ -470,7 +530,7 @@ public class Libs {
     	String result ="0";
   	  try{
   	    	String sql = "Select top 1 banyak ,hrgperbrg from " +Libs.getDbName()+".dbo.beli_rin where kd_barang='"+code+"'   order by no_fak desc";
-  	    	System.out.println(sql);
+//  	    	System.out.println(sql);
   	    	List<Object[]> l = s.createSQLQuery(sql).list();
   	    	for(Object[] o : l){
   	    		result = Libs.nn(o[1]).trim();
@@ -490,7 +550,7 @@ public class Libs {
     	String result = "0";
   	  try{
   	    	String sql = "Select top 1 banyak ,hrgperbrg from " +Libs.getDbName()+".dbo.beli_rin where kd_barang='"+code+"'   order by no_fak desc";
-  	    	System.out.println(sql);
+//  	    	System.out.println(sql);
   	    	List<Object[]> l = s.createSQLQuery(sql).list();
   	    	for(Object[] o : l){
   	    		result = Libs.nn(o[0]).trim();
@@ -1475,6 +1535,47 @@ public class Libs {
         if (Libs.nn(Libs.config.get("use_as400")).equals("true")) return true; else return false;
     }
 
+    
+    public static Object[] getmerk(String code) {
+		Session s = Libs.sfDB.openSession();
+    	Object[] result = new Object[3];
+    	try{
+    		String qry = " select kode, nama from "+Libs.getDbName()+".dbo.merk "
+        			   + "where kode = '"+code+"' ";
+        	List<Object[]> l = s.createSQLQuery(qry).list();
+        	 if (l.size()==1) {
+                 Object[] o = l.get(0);
+                 result[0] = Libs.nn(o[1]) +"("+Libs.nn(o[0])+")" ;
+             }
+    	}catch(Exception e){
+    		log.error("satuan", e);
+    	}finally{
+    		if (s!=null && s.isOpen()) s.close();
+    	}
+    	return result;
+	}
+    
+    public static Object[] getsubkategori(String code) {
+		Session s = Libs.sfDB.openSession();
+    	Object[] result = new Object[3];
+    	try{
+    		String qry = " select a.kode as kdkategori, a.nama as namakategori ,b.kode as kdsub ,b.nama as namasub from  "+Libs.getDbName()+".dbo.kategori a inner join  "+Libs.getDbName()+".dbo.subkategori b on a.kode=b.kd_kategori"
+    				   + " where b.kode = '"+code+"' ";
+//    		System.out.println(qry);
+        	List<Object[]> l = s.createSQLQuery(qry).list();
+        	 if (l.size()==1) {
+                 Object[] o = l.get(0);
+                 result[0] = Libs.nn(o[1]) +"("+Libs.nn(o[0])+")" ;
+                 result[1] = Libs.nn(o[3]) +"("+Libs.nn(o[2])+")" ;
+             }
+    	}catch(Exception e){
+    		log.error("subkategori", e);
+    	}finally{
+    		if (s!=null && s.isOpen()) s.close();
+    	}
+    	return result;
+	}
+    
 
 	public static Object[] getStok(String code) {
 		Session s = Libs.sfDB.openSession();
@@ -1541,7 +1642,7 @@ public class Libs {
 		int result = 0;
     	try{
     		String qry = " select count(*),0 from "+Libs.getMysqlDbName()+"."+table+"  ";
-        	System.out.println("paging mysql" + qry);
+//        	System.out.println("paging mysql" + qry);
         	List<Object[]> l = s.createSQLQuery(qry).list();
         	if (l.size()==1) {
                 Object[] o = l.get(0);

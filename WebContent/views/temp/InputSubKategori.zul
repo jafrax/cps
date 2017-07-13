@@ -1,0 +1,36 @@
+<window border="normal" width="350px" height="400px" position="center" closable="true" sizable="true" contentStyle="padding:0px;" use="com.controllers.InputSubKategoriController">
+    <caption label="Sub kategori" image="resources/icons/tools.png"/>
+    <panel width="100%" height="100%">
+        <toolbar>
+            <toolbarbutton image="resources/icons/save.png" tooltiptext="Save" onClick="spaceOwner.save();"/>
+            <toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
+        </toolbar>
+        <panelchildren>
+            <grid hflex="true" width="100%" height="100%">
+                <columns visible="false">
+                    <column width="100px"/>
+                    <column/>
+                </columns>
+                   <rows>
+ 	                   <row> Kode <hlayout>
+		                   <textbox id="kode" width="100px" />
+		                   </hlayout> </row>
+	                   <row> Kategori <hlayout>
+	                       <combobox id="kd_kategori"  width="200px" onSelect="spaceOwner.KategoriSelected();" readonly="true"/>
+	                       </hlayout> </row>
+	                   <row> Nama <hlayout>
+		                   <textbox id="nama" width="200px" />
+		                   </hlayout> </row>
+	                   <row> Deskripsi 1  <hlayout>
+		                   <textbox id="ket1" width="200px" />
+		                   </hlayout> </row>
+		                <row> Deskripsi 2 <hlayout>
+		                   <textbox id="ket2" width="200px" />
+		                   </hlayout> </row>
+	                 <row></row>
+	                 
+              </rows>
+            </grid>
+        </panelchildren>
+    </panel>
+</window>

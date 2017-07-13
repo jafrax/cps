@@ -7,7 +7,7 @@
                 	<toolbarbutton image="resources/icons/add.png" tooltiptext="Add"  onClick='spaceOwner.openMaster("InputSuplier");'/>
                     <toolbarbutton id="tbnDelete" image="resources/icons/delete.png" disabled="true" tooltiptext="Delete" onClick="spaceOwner.delete();"/>
                     <toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
-                    
+                    <toolbarbutton image="resources/icons/printer.png" tooltiptext="Refresh" onClick="spaceOwner.print();"/>
                 </toolbar>
                 <toolbar align="end" height="21px">
                     <image src="resources/icons/browse.png"/>

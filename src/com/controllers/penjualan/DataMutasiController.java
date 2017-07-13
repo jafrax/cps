@@ -13,6 +13,7 @@ import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.*;
 import org.zkoss.zul.event.PagingEvent;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -41,10 +42,7 @@ public class DataMutasiController extends Window {
         pg = (Paging) getFellow("pg");
         startDate = (Datebox)getFellow("startDate");
         endDate = (Datebox)getFellow("endDate");
-        
-        
         endDate.setValue(new Date());
-        
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -30);
         startDate.setValue(cal.getTime());
@@ -81,24 +79,32 @@ public class DataMutasiController extends Window {
             for (Object[] o : l) {
                 Listitem li = new Listitem();
                 li.setValue(o);
-                li.appendChild(new Listcell(Libs.nn(o[1]).trim()));
-                A mutasi = new A(Libs.nn(o[1]));
-                mutasi.setStyle("color:#00bbee;text-decoration:none");
-                Listcell cell = new Listcell();
-                cell.appendChild(mutasi);
-    			li.appendChild(cell);
-
-                li.appendChild(new Listcell(Libs.nn(o[2]).trim()));
+                li.appendChild(new Listcell(Libs.nn(o[0]).trim()));
                 
-                final String no = (String)o[1];
-                mutasi.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
-
-					@Override
-					public void onEvent(Event arg0) throws Exception {
-						showMutasi(no);
-					}
-				});
-                lb.appendChild(li);
+		                String newstring = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		                if (newstring.equals(Libs.nn(o[0]))){
+		                
+		                		A mutasi = new A(Libs.nn(o[1]));
+			                    mutasi.setStyle("color:#00bbee;text-decoration:none");
+			                    Listcell cell = new Listcell();
+			                    cell.appendChild(mutasi);
+			        			li.appendChild(cell);
+			        			
+			                    final String no = (String)o[1];
+			                    mutasi.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
+			
+			    					@Override
+			    					public void onEvent(Event arg0) throws Exception {
+			    						showMutasi(no);
+			    					}
+			    				});
+		                	
+		                }else {
+	                	li.appendChild(new Listcell(Libs.nn(o[1]).trim()));
+		                } 
+	                	
+                 li.appendChild(new Listcell(Libs.nn(o[2]).trim()));
+                 lb.appendChild(li);
             }
         } catch (Exception ex) {
             log.error("populate", ex);

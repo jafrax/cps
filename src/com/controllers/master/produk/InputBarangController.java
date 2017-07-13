@@ -34,12 +34,12 @@ public class InputBarangController extends Window {
     private Combobox subkategori;
     private Textbox kategori;
     private Combobox satuan;
-    private Textbox harga1;
-    private Textbox harga2;
-    private Textbox harga3;
-    private Textbox harga4;
-    private Textbox harga5;
-    private Textbox harga6;
+    private Textbox hargaA;
+    private Textbox hargaB;
+    private Textbox hargaE;
+    private Textbox hpp;
+    private Textbox ukuran;
+    private Textbox warna; 
     private Textbox ket1;
     private Textbox ket2;  
 
@@ -61,12 +61,12 @@ public class InputBarangController extends Window {
         subkategori = (Combobox) getFellow("subkategori");
         kategori = (Textbox) getFellow("kategori");
         satuan = (Combobox) getFellow("satuan");
-        harga1 = (Textbox) getFellow("harga1");
-        harga2 = (Textbox) getFellow("harga2");
-        harga3 = (Textbox) getFellow("harga3");
-        harga4 = (Textbox) getFellow("harga4");
-        harga5 = (Textbox) getFellow("harga5");
-        harga6 = (Textbox) getFellow("harga6");
+        hargaA = (Textbox) getFellow("hargaA");
+        hargaB = (Textbox) getFellow("hargaB");
+        hargaE = (Textbox) getFellow("hargaE");
+        hpp = (Textbox) getFellow("hpp");
+        ukuran = (Textbox) getFellow("ukuran");
+        warna = (Textbox) getFellow("warna");
         ket1 = (Textbox) getFellow("ket1");
         ket2 = (Textbox) getFellow("ket2");
         
@@ -97,14 +97,13 @@ public class InputBarangController extends Window {
    	             s.clear();
    	    		}
         	
-        	 String qry = " insert into  "+Libs.getDbName()+".dbo.barang  (kode,idbarang,namabrg,merkbrg,tipebrg,satuan,kd_subkategori,merk,"
-             		+ "harga1,harga2,harga3,harga4,harga5,harga6,ket1,ket2, "
-             		+ "print_ts ) "
+        	 String qry = " insert into  "+Libs.getDbName()+".dbo.barang  (kode,idbarang,namabrg,merkbrg,tipebrg,ukuran,warna,satuan,kd_subkategori,merk,"
+             		+ " hargaA,hargaB,hargaE,hpp,ket1,ket2 ) "
              		+ " values "
-             		+ " ('"+code.getText()+"','"+nama.getText()+"','"+nama.getText()+"','"+merkbrg.getText()+"','"+tipebrg.getText()+"',"
-             		+ " '"+satuan.getText()+"', '"+sub+"','"+mrk+"','"+harga1.getText()+"','"+harga2.getText()+"','"+harga3.getText()+"'"
-             		+ ",'"+harga4.getText()+"','"+harga5.getText()+"','"+harga6.getText()+"','"+ket1.getText()+"','"+ket2.getText()+"', "
-             		+ "'false')";
+             		+ " ('"+code.getText()+"','"+idbarang.getText()+"','"+nama.getText()+"','"+merkbrg.getText()+"','"+tipebrg.getText()+"', "
+             		+ " '"+ukuran.getText()+"','"+warna.getText()+"','"+satuan.getText()+"', '"+sub+"','"+mrk+"', "
+             		+ " '"+hargaA.getText()+"','"+hargaB.getText()+"','"+hargaE.getText()+"','"+hpp.getText()+"', "
+             		+ " '"+ket1.getText()+"','"+ket2.getText()+"' )";
              System.out.println(qry);
              s.createSQLQuery(qry).executeUpdate();
              s.flush();
@@ -113,6 +112,7 @@ public class InputBarangController extends Window {
              Messagebox.show("Insert status has been saved", "Information", Messagebox.OK, Messagebox.INFORMATION);
              valid = true;
             } catch (Exception ex) {
+             s.getTransaction().rollback();
              log.error("save", ex);
              Messagebox.show("Error status has been saved", "Information", Messagebox.OK, Messagebox.INFORMATION);
          } finally {
@@ -168,12 +168,12 @@ public class InputBarangController extends Window {
      subkategori.setText("");
      kategori.setText("");
      satuan.setText("");
-     harga1.setText("");
-     harga2.setText("");
-     harga3.setText("");
-     harga4.setText("");
-     harga5.setText("");
-     harga6.setText("");
+     hargaA.setText("");
+     hargaB.setText("");
+     hargaE.setText("");
+     hpp.setText("");
+     ukuran.setText("");
+     warna.setText("");
      ket1.setText("");
      ket2.setText("");
      

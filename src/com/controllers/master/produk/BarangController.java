@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.*;
 import org.zkoss.zul.event.PagingEvent;
 
@@ -59,13 +60,13 @@ public class BarangController extends Window {
         try {
             String q0 = "select count(*) ";
             String q1 = "select "
-                    + "kode, idbarang,namabrg,merkbrg,tipebrg,satuan,harga1,harga2,harga3,harga4,harga5,harga6,"
+                    + "kode, idbarang,namabrg,merkbrg,tipebrg,ukuran,warna,satuan,hargaA,hargaB,hargaE,hpp,"
                     + "kd_subkategori,merk,ket1,ket2 ";
             String q2 = " from "
                     + ""+Libs.getDbName()+".dbo.barang ";
             String q3 = "";
                    
-            String q4 = "order by kode desc, namabrg asc ";
+            String q4 = "order by kode asc ";
             
             if(cbStatus.getSelectedIndex() == 0){
             	q2 += " where tdkpakai = 0 ";
@@ -87,19 +88,25 @@ public class BarangController extends Window {
             for (Object[] o : l) {
             	Listitem li = new Listitem();
                 li.setValue(o);
+                
+                A kode = new A(Libs.nn(o[0]).trim());
+                kode.setStyle("color:#00bbee;text-decoration:none");
+                Listcell cell = new Listcell();
+                cell.appendChild(kode);
+    			li.appendChild(cell);
 
-                li.appendChild(new Listcell(Libs.nn(o[0])));
+//                li.appendChild(new Listcell(Libs.nn(o[0])));
                 li.appendChild(new Listcell(Libs.nn(o[1])));
                 li.appendChild(new Listcell(Libs.nn(o[2])));
                 li.appendChild(new Listcell(Libs.nn(o[3])));
                 li.appendChild(new Listcell(Libs.nn(o[4])));
+                li.appendChild(new Listcell(Libs.nn(o[5])));
+                li.appendChild(new Listcell(Libs.nn(o[6])));
                 
                 Object[] obj = Libs.getStok(Libs.nn(Libs.nn(o[0])));
 			  	li.appendChild(new Listcell(obj[0].toString()));
                 
-			  	li.appendChild(new Listcell(Libs.nn(o[5])));
-                li.appendChild(new Listcell(Libs.nn(o[6])));
-                li.appendChild(new Listcell(Libs.nn(o[7])));
+			  	li.appendChild(new Listcell(Libs.nn(o[7])));
                 li.appendChild(new Listcell(Libs.nn(o[8])));
                 li.appendChild(new Listcell(Libs.nn(o[9])));
                 li.appendChild(new Listcell(Libs.nn(o[10])));
@@ -108,6 +115,15 @@ public class BarangController extends Window {
                 li.appendChild(new Listcell(Libs.nn(o[13])));
                 li.appendChild(new Listcell(Libs.nn(o[14])));
                 li.appendChild(new Listcell(Libs.nn(o[15])));
+
+                final String Id = (String)Libs.nn(o[0]);
+                kode.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
+
+					@Override
+					public void onEvent(Event arg0) throws Exception {
+						showEditBarang(Id);
+					}
+				});
              
                 lb.appendChild(li);
             }
@@ -127,6 +143,12 @@ public class BarangController extends Window {
     public void openMasterProduk(String viewName) {
         Window w = (Window) Executions.createComponents("views/master/produk/" + viewName + ".zul", this, null);
         w.doOverlapped();
+    }
+    
+    public void showEditBarang(String Id){
+    	Window w = (Window) Executions.createComponents("views/master/produk/EditBarang.zul", Libs.getRootWindow(), null);
+    	w.setAttribute("Id", Id);
+    	w.doModal();
     }
     
     public void refresh() {
@@ -156,13 +178,16 @@ public class BarangController extends Window {
            	try{
            		s.beginTransaction();
            		
-           		String sql = " delete "+Libs.getDbName()+".dbo.stokperlok where  "
-                        +" kd_barang ='"+ Libs.nn(ihm[0]) + "' ";
+//           		String sql = " delete "+Libs.getDbName()+".dbo.stokperlok where  "
+//                        +" kd_barang ='"+ Libs.nn(ihm[0]) + "' ";
             		
-           		String qry = " delete "+Libs.getDbName()+".dbo.barang where  "
-                       +" kode ='"+ Libs.nn(ihm[0]) + "' ";
+//           		String qry = " delete "+Libs.getDbName()+".dbo.barang where  "
+//                       +" kode ='"+ Libs.nn(ihm[0]) + "' ";
            		
-           		s.createSQLQuery(qry+sql).executeUpdate();
+           		
+           		String sql ="update "+Libs.getDbName()+".dbo.barang set tdkpakai=1 where kode ='"+ Libs.nn(ihm[0]) + "' ";
+           		
+           		s.createSQLQuery(sql).executeUpdate();
            		s.flush();
            		s.clear();
            		s.getTransaction().commit();

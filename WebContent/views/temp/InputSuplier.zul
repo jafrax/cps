@@ -1,0 +1,52 @@
+<window border="normal" width="550px" height="400px" position="center" closable="true" sizable="true" contentStyle="padding:0px;" use="com.controllers.InputSuplierController">
+    <caption label="Input Suplier" image="resources/icons/tools.png"/>
+    <panel width="100%" height="100%">
+        <toolbar>
+            <toolbarbutton image="resources/icons/save.png" tooltiptext="Save" onClick="spaceOwner.save();"/>
+             <toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
+        </toolbar>
+        <panelchildren>
+            <grid hflex="true" width="100%" height="100%">
+                <columns visible="false">
+                    <column width="100px"/>
+                    <column/>
+                </columns>
+                   <rows>
+                   
+	                   <row> Suplier Id  <hlayout>
+		                   <textbox id="code" width="80px" />
+		                   </hlayout> </row>
+	                   <row> Nama <hlayout>
+	                       <textbox id="nama" width="200px" />
+	                       </hlayout> </row>
+	                    <row> Perusahaan <hlayout>
+		                    <textbox id="perusahaan" width="300px" />
+		                    </hlayout> </row>
+		               <row> Alamat1  <hlayout>
+		                   <textbox id="alamat1" width="300px" />
+		                   </hlayout> </row>
+	                   <row> Alamat2 <hlayout>
+	                       <textbox id="alamat2" width="300px" />
+	                       </hlayout> </row>
+	                    <row> Kota <hlayout>
+		                    <textbox id="kota" width="300px" />
+		                    </hlayout> </row>
+		               <row> Kode POS  <hlayout>
+		                   <textbox id="pos" width="80px" />
+		                   </hlayout> </row>
+	                   <row> Telp <hlayout>
+	                       <textbox id="telp" width="100px" />
+	                       </hlayout> </row>
+	                   <row> Fax  <hlayout>
+		                   <textbox id="fax" width="100px" />
+		                   </hlayout> </row>
+	                    <row> Tempo  <hlayout>
+		                   <decimalbox format="###.##"  id="tempo" width="80px" />
+		                   </hlayout> </row>
+		                   <row></row>
+	                 
+              </rows>
+            </grid>
+        </panelchildren>
+    </panel>
+</window>

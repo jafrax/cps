@@ -1,0 +1,40 @@
+<window border="normal" width="350px" height="400px" position="center" closable="true" sizable="true" contentStyle="padding:0px;" use="com.controllers.komisi.InputKomisiController">
+    <caption label="Input Komisi" image="resources/icons/tools.png"/>
+    <panel width="100%" height="100%">
+        <toolbar>
+            <toolbarbutton image="resources/icons/save.png" tooltiptext="Save" onClick="spaceOwner.save();"/>
+            <toolbarbutton image="resources/icons/refresh.png" tooltiptext="Refresh" onClick="spaceOwner.refresh();"/>
+        </toolbar>
+        <panelchildren>
+            <grid hflex="true" width="100%" height="100%">
+                <columns visible="false">
+                    <column width="100px"/>
+                    <column/>
+                </columns>
+                   <rows>
+ 	                   <row> Code Sales  <hlayout>
+		                   <combobox id="code" width="200px" onSelect="spaceOwner.SalesSelected();" readonly="true"/>
+		                   </hlayout> </row>
+	                   <row> Kategori <hlayout>
+	                       <combobox id="kategori"  width="200px" onSelect="spaceOwner.KategoriSelected();" readonly="true"/>
+	                       </hlayout> </row>
+	                    <row> komisi <hlayout>
+		                    <decimalbox format="###.##" id="komisi" width="80px" />
+		                    </hlayout> </row>
+		               
+		               <row> Hrga A  <hlayout>
+		                   <decimalbox format="###.##"  id="kom1" width="80px" />
+		                   </hlayout> </row>
+		               <row> Harga B  <hlayout>
+		                   <decimalbox format="###.##"  id="kom2" width="80px" />
+		                   </hlayout> </row>
+		               <row> Harga E  <hlayout>
+		                   <decimalbox format="###.##"  id="kom3" width="80px" />
+		                   </hlayout> </row>
+		                   <row></row>
+	                 
+              </rows>
+            </grid>
+        </panelchildren>
+    </panel>
+</window>

@@ -1,0 +1,13 @@
+2017-07-03 19:47:49,826 [Thread-13] ERROR com.controllers.master.produk.EditBarangController (EditBarangController.java:118) - populate
+java.lang.NullPointerException
+	at com.controllers.master.produk.EditBarangController.populate(EditBarangController.java:103)
+	at com.controllers.master.produk.EditBarangController.onCreate(EditBarangController.java:52)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.zkoss.zk.ui.AbstractComponent.service(AbstractComponent.java:2724)
+	at org.zkoss.zk.ui.AbstractComponent.service(AbstractComponent.java:2654)
+	at org.zkoss.zk.ui.impl.EventProcessor.process(EventProcessor.java:136)
+	at org.zkoss.zk.ui.impl.EventProcessingThreadImpl.process0(EventProcessingThreadImpl.java:534)
+	at org.zkoss.zk.ui.impl.EventProcessingThreadImpl.run(EventProcessingThreadImpl.java:461)

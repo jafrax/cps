@@ -19,18 +19,18 @@
                 	<listheader label="Kode Barang" width="100px"/>
                     <listheader label="Product ID" width="100px"/>
                     <listheader label="Nama Barang" width="200px"/>
-                    <listheader label="Merk barang" width="100px"/>
-                    <listheader label="tipe barang" width="80px"/>
+                    <listheader label="Merk barang" width="80px"/>
+                    <listheader label="Tipe barang" width="80px"/>
+                    <listheader label="Ukuran" width="80px"/>
+                    <listheader label="Warna" width="80px"/>
                     <listheader label="Jumlah" width="80px"/>
                     <listheader label="satuan" width="80px"/>
-                    <listheader label="harga A" width="80px"/>
+                    <listheader label="Harga A" width="80px"/>
                     <listheader label="Harga B" width="80px"/>
-        			<listheader label="harga C" width="80px"/>
-                    <listheader label="Harga D" width="80px"/>
-        			<listheader label="harga E" width="80px"/>
-                    <listheader label="Harga F" width="80px"/>
-        			<listheader label="Sub Kategori" width="50px"/>
-                    <listheader label="Merk motor" width="50px"/>
+        			<listheader label="Harga E" width="80px"/>
+        			<listheader label="HPP" width="80px"/>
+                    <listheader label="Sub Kategori" width="80px"/>
+                    <listheader label="Merk Motor" width="80px"/>
         			<listheader label="Ket1" width="80px"/>
                     <listheader label="ket2" width="80px"/>
                    
