@@ -1,2 +1,4 @@
 # cps
-CenterPoint
+Center Point Sale 
+
+aplikasi POS dan akunting 
