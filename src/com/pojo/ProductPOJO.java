@@ -2,13 +2,22 @@ package com.pojo;
 
 import java.util.Date;
 
+<<<<<<< HEAD
+=======
+/**
+ * Created by faizal on 1/20/14.
+ */
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
 public class ProductPOJO {
 
     private ClientPOJO clientPOJO;
     private String productId;
     private String productMerk;
     private String productName;
+<<<<<<< HEAD
     private String productTipe;
+=======
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     private String productFaktur;
     private String productYear;
     private Date startingDate;
@@ -88,6 +97,7 @@ public class ProductPOJO {
         this.productMerk = productMerk;
     }
 
+<<<<<<< HEAD
 	 public String getProductTipe() {
         return productTipe;
     }
@@ -96,5 +106,7 @@ public class ProductPOJO {
         this.productTipe = productTipe;
     }
 
+=======
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
    
 }

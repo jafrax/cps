@@ -82,7 +82,11 @@ public class Libs {
     	  try{
     	    	String sql = "Select * from " +Libs.getDbName()+".dbo.sales where tdkpakai=0  and kode = '"+code+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
+<<<<<<< HEAD
 //    	    	System.out.println("sales "+ sql);	
+=======
+    	    	System.out.println("sales "+ sql);	
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = ((String)o[1]).trim() + "("+ ((String) o[0]).trim() + ")";
@@ -113,7 +117,11 @@ public class Libs {
     	  try{
     	    	String sql = "Select kode,perusahaan from " +Libs.getDbName()+".dbo.customer where  kode = '"+code+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
+<<<<<<< HEAD
 //    	    	System.out.println("toko "+ sql);	
+=======
+    	    	System.out.println("toko "+ sql);	
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = Libs.nn(o[1]).trim();
@@ -135,7 +143,11 @@ public class Libs {
     	  try{
     	    	String sql = "Select jumlah,v_jumlah, (jumlah - v_jumlah) as stok  from " +Libs.getDbName()+".dbo.stokperlok where  kd_barang = '"+code+"' and kd_lokasi = '"+Lok+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
+<<<<<<< HEAD
 //    	    	System.out.println("sisa stok "+ sql);	
+=======
+    	    	System.out.println("sisa stok "+ sql);	
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = Integer.parseInt(Libs.nn(o[2]));
@@ -156,7 +168,11 @@ public class Libs {
     	  try{
     	    	String sql = "Select kode,hpp from " +Libs.getDbName()+".dbo.barang where  kode = '"+code+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
+<<<<<<< HEAD
 //    	    	System.out.println("hpp "+ sql);	
+=======
+    	    	System.out.println("hpp "+ sql);	
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = Integer.parseInt(Libs.nn(o[1]));
@@ -178,7 +194,11 @@ public class Libs {
     	  try{
     	    	String sql = "Select no_order,total from " +Libs.getDbName()+".dbo.salesorder  where  no_order = '"+order+"' ";
     	    	SQLQuery query = s.createSQLQuery(sql);
+<<<<<<< HEAD
 //    	    	System.out.println("total "+ sql);	
+=======
+    	    	System.out.println("total "+ sql);	
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		result = Libs.nn(o[1]).trim();
@@ -201,6 +221,10 @@ public class Libs {
     	  try{
     	    	String sql = "Select * from " +Libs.getDbName()+".dbo.sales where tdkpakai=0  order by kode asc";
     	    	SQLQuery query = s.createSQLQuery(sql);
+<<<<<<< HEAD
+=======
+    	    	System.out.println("sales "+ sql);	
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     	    	List<Object[]> l = query.list();
     	    	for(Object[] o : l){
     	    		cb.appendItem(((String)o[1]).trim() + "("+ ((String) o[0]).trim() + ")");
@@ -239,6 +263,7 @@ public class Libs {
   			
     }
     
+<<<<<<< HEAD
     
     public static void getsatuan(Combobox cb){
     	cb.getItems().clear();
@@ -256,13 +281,19 @@ public class Libs {
   	
     }
     
+=======
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     public static void getsubkategori(Combobox cb){
     	cb.getItems().clear();
     	cb.appendItem("");
     	
   	  Session s = Libs.sfDB.openSession();
   	  try{
+<<<<<<< HEAD
   	    	String sql = "Select kode,nama from " +Libs.getDbName()+".dbo.subkategori where tdkpakai=0  order by kode asc";
+=======
+  	    	String sql = "Select kode,nama from " +Libs.getDbName()+".dbo.subkategori where flg=0  order by kode asc";
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
   	    	SQLQuery query = s.createSQLQuery(sql);
   	    		
   	    	List<Object[]> l = query.list();
@@ -282,11 +313,19 @@ public class Libs {
     
     public static void getKategori(Combobox cb){
     	cb.getItems().clear();
+<<<<<<< HEAD
     	cb.appendItem("");
     	
   	  Session s = Libs.sfDB.openSession();
   	  try{
   	    	String sql = "Select * from " +Libs.getDbName()+".dbo.kategori where tdkpakai=0  order by kode asc";
+=======
+    	//cb.appendItem("");
+    	
+  	  Session s = Libs.sfDB.openSession();
+  	  try{
+  	    	String sql = "Select * from " +Libs.getDbName()+".dbo.kategori where flg=0  order by kode asc";
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
   	    	SQLQuery query = s.createSQLQuery(sql);
   	    		
   	    	List<Object[]> l = query.list();
@@ -304,6 +343,7 @@ public class Libs {
     }
     
     
+<<<<<<< HEAD
     public static String setKategori(String kode){
     	String result ="";
   	  Session s = Libs.sfDB.openSession();
@@ -325,6 +365,8 @@ public class Libs {
     }
     
     
+=======
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     public static void getGudang(Combobox cb){
     	cb.getItems().clear();
     	//cb.appendItem("");
@@ -349,6 +391,7 @@ public class Libs {
     }
     
     
+<<<<<<< HEAD
     public static int cekstoklok(String kode, String lokasi){
     	Session s = Libs.sfDB.openSession();
     	int result =0 ;
@@ -488,6 +531,16 @@ public class Libs {
 	  	  try{
 	  	    	String sql = "Select kode,"+harga+" from " +Libs.getDbName()+".dbo.barang where kode='"+code+"'  ";
 //	  	    	System.out.println("hj "+n+sql);
+=======
+    public static String hargajual(String code,int n){
+    	Session s = Libs.sfDB.openSession();
+    	String result ="0";
+    	if (n > 0){
+    		String harga = "harga"+n;
+	  	  try{
+	  	    	String sql = "Select kode,"+harga+" from " +Libs.getDbName()+".dbo.barang where kode='"+code+"'  ";
+	  	    	System.out.println("hj "+n+sql);
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
 	  	    	List<Object[]> l = s.createSQLQuery(sql).list();
 	  	    	for(Object[] o : l){
 	  	    		result = Libs.nn(o[1]).trim();
@@ -511,7 +564,11 @@ public class Libs {
   	    			+ "from " +Libs.getDbName()+".dbo.salesorder_rin a  "
   	    			+ "inner join " +Libs.getDbName()+".dbo.salesorder b ON a.no_order=b.no_order  "
   	    			+ "where a.kd_barang='"+code+"' and  b.kd_cust = '"+cust+"' order by a.ledate desc";
+<<<<<<< HEAD
 //  	    	System.out.println("haj :"+sql);
+=======
+  	    	System.out.println("haj :"+sql);
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
   	    	List<Object[]> l = s.createSQLQuery(sql).list();
   	    	for(Object[] o : l){
   	    		result = Libs.nn(o[1]).trim();
@@ -530,7 +587,11 @@ public class Libs {
     	String result ="0";
   	  try{
   	    	String sql = "Select top 1 banyak ,hrgperbrg from " +Libs.getDbName()+".dbo.beli_rin where kd_barang='"+code+"'   order by no_fak desc";
+<<<<<<< HEAD
 //  	    	System.out.println(sql);
+=======
+  	    	System.out.println(sql);
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
   	    	List<Object[]> l = s.createSQLQuery(sql).list();
   	    	for(Object[] o : l){
   	    		result = Libs.nn(o[1]).trim();
@@ -550,7 +611,11 @@ public class Libs {
     	String result = "0";
   	  try{
   	    	String sql = "Select top 1 banyak ,hrgperbrg from " +Libs.getDbName()+".dbo.beli_rin where kd_barang='"+code+"'   order by no_fak desc";
+<<<<<<< HEAD
 //  	    	System.out.println(sql);
+=======
+  	    	System.out.println(sql);
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
   	    	List<Object[]> l = s.createSQLQuery(sql).list();
   	    	for(Object[] o : l){
   	    		result = Libs.nn(o[0]).trim();
@@ -1535,6 +1600,7 @@ public class Libs {
         if (Libs.nn(Libs.config.get("use_as400")).equals("true")) return true; else return false;
     }
 
+<<<<<<< HEAD
     
     public static Object[] getmerk(String code) {
 		Session s = Libs.sfDB.openSession();
@@ -1576,6 +1642,8 @@ public class Libs {
     	return result;
 	}
     
+=======
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
 
 	public static Object[] getStok(String code) {
 		Session s = Libs.sfDB.openSession();
@@ -1583,6 +1651,10 @@ public class Libs {
     	try{
     		String qry = " select isnull(sum(jumlah),0) as jml,0 from "+Libs.getDbName()+".dbo.stokperlok "
         			   + "where kd_barang = '"+code+"' ";
+<<<<<<< HEAD
+=======
+        	//System.out.println("getstok" + qry);
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
         	List<Object[]> l = s.createSQLQuery(qry).list();
         	 if (l.size()==1) {
                  Object[] o = l.get(0);
@@ -1642,7 +1714,11 @@ public class Libs {
 		int result = 0;
     	try{
     		String qry = " select count(*),0 from "+Libs.getMysqlDbName()+"."+table+"  ";
+<<<<<<< HEAD
 //        	System.out.println("paging mysql" + qry);
+=======
+        	System.out.println("paging mysql" + qry);
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
         	List<Object[]> l = s.createSQLQuery(qry).list();
         	if (l.size()==1) {
                 Object[] o = l.get(0);

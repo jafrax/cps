@@ -101,6 +101,7 @@ public class MainController extends Window {
         w.doOverlapped();
     }
     
+<<<<<<< HEAD
     public void openMasterGudang(String viewName) {
         Window w = (Window) Executions.createComponents("views/master/gudang/" + viewName + ".zul", this, null);
         w.doOverlapped();
@@ -111,6 +112,8 @@ public class MainController extends Window {
         w.doOverlapped();
     }
     
+=======
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     public void openCekgiro(String viewName) {
         Window w = (Window) Executions.createComponents("views/cekgiro/" + viewName + ".zul", this, null);
         w.doOverlapped();

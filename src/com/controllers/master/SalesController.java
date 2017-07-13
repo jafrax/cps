@@ -9,11 +9,17 @@ import org.slf4j.LoggerFactory;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+<<<<<<< HEAD
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.*;
 import org.zkoss.zul.event.PagingEvent;
 
 import java.math.BigInteger;
+=======
+import org.zkoss.zul.*;
+import org.zkoss.zul.event.PagingEvent;
+
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
 import java.util.List;
 
 public class SalesController extends Window {
@@ -72,6 +78,7 @@ public class SalesController extends Window {
             Integer rc = (Integer) s.createSQLQuery(q0 + q2 + q3).uniqueResult();
             pg.setTotalSize(rc);
             
+<<<<<<< HEAD
             List<Object[]> l = s.createSQLQuery(q1 + q2 + q3 + q4).setFirstResult(offset).setMaxResults(limit).list();
             for (Object[] o : l) {
                
@@ -86,10 +93,21 @@ public class SalesController extends Window {
     			li.appendChild(cell);
 
 
+=======
+            //Messagebox.show("query :" + q1 + q2 + q3 + q4);
+            List<Object[]> l = s.createSQLQuery(q1 + q2 + q3 + q4).setFirstResult(offset).setMaxResults(limit).list();
+            for (Object[] o : l) {
+               
+                Listitem li = new Listitem();
+                li.setValue(o);
+                li.appendChild(new Listcell(Libs.nn(o[0]).trim()));
+                li.appendChild(new Listcell(Libs.nn(o[1]).trim()));
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
                 li.appendChild(new Listcell(Libs.nn(o[2]).trim()));
                 li.appendChild(new Listcell(Libs.nn(o[3]).trim()));
                 li.appendChild(new Listcell(Libs.nn(o[4]).trim()));
                 li.appendChild(new Listcell(Libs.nn(o[5]).trim()));
+<<<<<<< HEAD
                
                 
                 final String SalesId = (String)o[0];
@@ -103,6 +121,9 @@ public class SalesController extends Window {
                 
                 lb.appendChild(li);
                
+=======
+                lb.appendChild(li);
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
             }
         } catch (Exception ex) {
             log.error("populate", ex);
@@ -111,12 +132,17 @@ public class SalesController extends Window {
         }
     }
 
+<<<<<<< HEAD
     public void SalesSelected() {
+=======
+    public void clientSelected() {
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
         if (lb.getSelectedCount()>0) {
         	((Toolbarbutton) getFellow("tbnDelete")).setDisabled(false);
         	}
     } 
 
+<<<<<<< HEAD
     
     public void showSalesDetail(String SalesId){
     	Window w = (Window) Executions.createComponents("views/master/EditSales.zul", Libs.getRootWindow(), null);
@@ -128,6 +154,11 @@ public class SalesController extends Window {
         where = null;
         populate(0, pg.getPageSize());
         ((Toolbarbutton) getFellow("tbnDelete")).setDisabled(true);
+=======
+    public void refresh() {
+        where = null;
+        populate(0, pg.getPageSize());
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     }
 
     
@@ -136,7 +167,17 @@ public class SalesController extends Window {
         w.doOverlapped();
     }
     
+<<<<<<< HEAD
 
+=======
+//    public void Input() {
+//    	Window w = (Window) Executions.createComponents("views/InputSales.zul", this, null);
+//    	//Window w = (Window) Executions.createComponents("views/tes.zul", this, null);
+//        w.doModal();
+//    }
+   
+    
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
     public void Selected() {
         quickSearch();
     }
@@ -159,8 +200,13 @@ public class SalesController extends Window {
         	Session s = Libs.sfDB.openSession();
         	try{
         	s.beginTransaction();
+<<<<<<< HEAD
         	String qry ="update "+Libs.getDbName()+".dbo.sales set tdkpakai=1 where "
         				+" kode ='"+ Libs.nn(ihm[0]) + "' ";
+=======
+        	String qry = " delete "+Libs.getDbName()+".dbo.sales where  "
+                    +" kode ='"+ Libs.nn(ihm[0]) + "' ";
+>>>>>>> f33d0c7c096ffb848a74c032a3a6e295c6eaf7ee
         	   s.createSQLQuery(qry).executeUpdate();
             s.flush();
             s.clear();
